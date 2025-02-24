@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Cocktail, Truck, Snowflake, MapPin, Instagram, Phone } from "lucide-react";
+import { Glass, Truck, Snowflake, MapPin, Instagram, Phone } from "lucide-react";
 
 const Index = () => {
   const combos = [
@@ -32,7 +32,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 to-secondary"></div>
         <div className="container-custom relative z-10 text-center animate-fade-up">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <Cocktail size={48} className="text-primary" />
+            <Glass size={48} className="text-primary" />
             <h1 className="text-5xl md:text-7xl font-black tracking-tight">
               RINCÓN DEL CHUPI
             </h1>
