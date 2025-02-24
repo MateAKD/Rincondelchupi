@@ -10,7 +10,19 @@ export default {
         primary: "#ff4444",
         secondary: "#1a1a1a",
         whatsapp: "#25D366",
-        instagram: "#E1306C"
+        instagram: "#E1306C",
+        border: "hsl(var(--border))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        ring: "hsl(var(--ring))",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
