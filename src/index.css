@@ -77,7 +77,24 @@
   animation: slide 3s linear infinite;
 }
 
-/* Scrollbar Styles */
+@keyframes autoScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-320px * 3));
+  }
+}
+
+.auto-scroll {
+  animation: autoScroll 10s linear infinite;
+  animation-play-state: running;
+}
+
+.auto-scroll:hover {
+  animation-play-state: paused;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

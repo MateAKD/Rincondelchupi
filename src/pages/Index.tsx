@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { Truck, Snowflake, MapPin, Instagram, Phone, Menu, X, UserCog, Package, ThermometerSnowflake } from "lucide-react";
 import Vimeo from "@vimeo/player";
@@ -6,6 +5,7 @@ import Vimeo from "@vimeo/player";
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     if (videoRef.current) {
@@ -133,45 +133,71 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative h-screen flex items-center justify-center text-white overflow-hidden pt-20">
-        <div ref={videoRef} className="absolute inset-0 w-full h-full"></div>
-        <div className="absolute inset-0 bg-black/50"></div>
+      <section id="home" className="relative min-h-[50vh] md:h-screen flex items-center justify-center text-white overflow-hidden pt-20">
+        <div ref={videoRef} className="absolute inset-0 w-full h-full">
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-golden animate-fade-up">
+            Rincón del Chupi
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-200 mb-8 animate-fade-up" style={{animationDelay: '0.2s'}}>
+            Las mejores bebidas, al mejor precio
+          </p>
+          <button 
+            onClick={handleWhatsAppClick}
+            className="bg-golden text-black px-6 py-3 rounded-lg text-lg font-semibold hover:bg-golden/90 transition-all duration-300 animate-fade-up"
+            style={{animationDelay: '0.4s'}}
+          >
+            ¡Pedí ahora!
+          </button>
+        </div>
       </section>
 
       {/* Features Section */}
-      <section className="relative py-20 bg-secondary/90">
+      <section className="relative py-12 md:py-20 bg-secondary/90 overflow-hidden">
         <div className="container-custom">
-          <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory scrollbar-hide">
-            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:transform hover:-translate-y-1">
-              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
-                <UserCog className="w-8 h-8 text-golden" />
-              </div>
-              <h3 className="text-xl font-bold text-golden">Atención Personalizada</h3>
-              <p className="text-gray-300">👤 Servicio exclusivo para cada cliente ✨</p>
-            </div>
+          <div className="relative">
+            <div 
+              ref={carouselRef}
+              className="flex gap-6 auto-scroll"
+              style={{ width: 'max-content' }}
+            >
+              {[...Array(2)].map((_, groupIndex) => (
+                <React.Fragment key={groupIndex}>
+                  <div className="shrink-0 w-[280px] md:w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:-translate-y-1">
+                    <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
+                      <UserCog className="w-8 h-8 text-golden" />
+                    </div>
+                    <h3 className="text-xl font-bold text-golden">Atención Personalizada</h3>
+                    <p className="text-gray-300">👤 Servicio exclusivo para cada cliente ✨</p>
+                  </div>
 
-            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:transform hover:-translate-y-1">
-              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
-                <Package className="w-8 h-8 text-golden" />
-              </div>
-              <h3 className="text-xl font-bold text-golden">Combos Exclusivos</h3>
-              <p className="text-gray-300">🎁 Las mejores ofertas para vos 🔥</p>
-            </div>
+                  <div className="shrink-0 w-[280px] md:w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:-translate-y-1">
+                    <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
+                      <Package className="w-8 h-8 text-golden" />
+                    </div>
+                    <h3 className="text-xl font-bold text-golden">Combos Exclusivos</h3>
+                    <p className="text-gray-300">🎁 Las mejores ofertas para vos 🔥</p>
+                  </div>
 
-            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:transform hover:-translate-y-1">
-              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
-                <Truck className="w-8 h-8 text-golden" />
-              </div>
-              <h3 className="text-xl font-bold text-golden">Delivery Zona Norte</h3>
-              <p className="text-gray-300">🚚 Llegamos a toda la zona norte ⚡</p>
-            </div>
+                  <div className="shrink-0 w-[280px] md:w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:-translate-y-1">
+                    <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
+                      <Truck className="w-8 h-8 text-golden" />
+                    </div>
+                    <h3 className="text-xl font-bold text-golden">Delivery Zona Norte</h3>
+                    <p className="text-gray-300">🚚 Llegamos a toda la zona norte ⚡</p>
+                  </div>
 
-            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:transform hover:-translate-y-1">
-              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
-                <ThermometerSnowflake className="w-8 h-8 text-golden" />
-              </div>
-              <h3 className="text-xl font-bold text-golden">Bebidas Frías</h3>
-              <p className="text-gray-300">🥶 Siempre bien frías 🧊</p>
+                  <div className="shrink-0 w-[280px] md:w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:-translate-y-1">
+                    <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
+                      <ThermometerSnowflake className="w-8 h-8 text-golden" />
+                    </div>
+                    <h3 className="text-xl font-bold text-golden">Bebidas Frías</h3>
+                    <p className="text-gray-300">🥶 Siempre bien frías 🧊</p>
+                  </div>
+                </React.Fragment>
+              ))}
             </div>
           </div>
           <div className="mt-8 flex justify-center">
