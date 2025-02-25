@@ -11,6 +11,7 @@ export default {
         secondary: "#1a1a1a",
         whatsapp: "#25D366",
         instagram: "#E1306C",
+        golden: "#D4AF37",
         border: "hsl(var(--border))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

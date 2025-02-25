@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Wine, Truck, Snowflake, MapPin, Instagram, Phone } from "lucide-react";
+import { Truck, Snowflake, MapPin, Instagram, Phone } from "lucide-react";
 
 const Index = () => {
   const combos = [
@@ -31,18 +31,22 @@ const Index = () => {
       <section className="relative h-screen flex items-center justify-center bg-secondary text-white overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 to-secondary"></div>
         <div className="container-custom relative z-10 text-center animate-fade-up">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <Wine size={48} className="text-primary" />
-            <h1 className="text-5xl md:text-7xl font-black tracking-tight">
+          <div className="flex flex-col items-center justify-center gap-4 mb-8">
+            <img 
+              src="/lovable-uploads/f13a16c6-b452-42de-a9c1-2449aae035c0.png"
+              alt="Rincón del Chupi Logo"
+              className="w-40 h-40 object-contain animate-pulse mb-4"
+            />
+            <h1 className="text-5xl md:text-7xl font-black tracking-tight text-golden">
               RINCÓN DEL CHUPI
             </h1>
           </div>
-          <div className="flex items-center justify-center gap-2 text-xl md:text-2xl text-primary font-medium mt-6">
+          <div className="flex items-center justify-center gap-2 text-xl md:text-2xl text-golden font-medium mt-6">
             <Truck className="animate-bounce" />
             <p>Delivery a TODA zona norte</p>
           </div>
-          <div className="mt-8 bg-black/80 py-4 px-6 rounded-lg inline-flex items-center gap-2">
-            <Snowflake className="text-primary animate-pulse" />
+          <div className="mt-8 bg-black/80 py-4 px-6 rounded-lg inline-flex items-center gap-2 border border-golden">
+            <Snowflake className="text-golden animate-pulse" />
             <p className="text-lg">Bebidas siempre FRÍAS</p>
           </div>
         </div>
