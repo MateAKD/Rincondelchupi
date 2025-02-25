@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Truck, Snowflake, MapPin, Instagram, Phone, Menu, X, UserCog, Package, ThermometerSnowflake } from "lucide-react";
+import { Truck, MapPin, Instagram, Phone, Menu, X, UserCog, Package, ThermometerSnowflake } from "lucide-react";
 import Vimeo from "@vimeo/player";
+
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (videoRef.current) {
       const player = new Vimeo(videoRef.current, {
@@ -18,32 +20,54 @@ const Index = () => {
       });
     }
   }, []);
-  const combos = [{
-    name: "Superclásico",
-    description: "1.5L Mimoff + 5 Speed",
-    price: "14.200"
-  }, {
-    name: "Fiesta Total",
-    description: "Fernet 750ml + 2L Coca-Cola",
-    price: "12.500"
-  }, {
-    name: "Premium Mix",
-    description: "Jack Daniel's + 4 Red Bull",
-    price: "32.800"
-  }];
+
+  const combos = [
+    {
+      name: "Superclásico",
+      description: "1 Fernet Branca + 2 Coca-Cola de 2,25L",
+      price: "17.900",
+      image: "/lovable-uploads/11de68c6-d111-4427-b657-b540d9e8efb8.png"
+    },
+    {
+      name: "Combo Vodka",
+      description: "1 Smirnoff + 5 Speed",
+      price: "14.200",
+      image: "/lovable-uploads/293974be-a7ee-42c2-b048-2ab207ddb5ff.png"
+    },
+    {
+      name: "Premium Mix",
+      description: "1 Absolut + 5 Speed",
+      price: "25.500",
+      image: "/lovable-uploads/7952d15d-d87d-4e31-a5da-85e9fff37df0.png"
+    },
+    {
+      name: "Gin Premium",
+      description: "1 Beefeater + 2 Schweppes",
+      price: "25.000",
+      image: "/lovable-uploads/16c95dcd-74b9-4ca9-8589-e7adbb3263f0.png"
+    },
+    {
+      name: "Gin Clásico",
+      description: "1 Gordon's + 2 Schweppes",
+      price: "16.800",
+      image: "/lovable-uploads/e88147c2-8f69-4138-bf4d-5f88b4c18df9.png"
+    }
+  ];
+
   const handleWhatsAppClick = () => {
     window.open("https://wa.me/1234567890", "_blank");
   };
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({
-        behavior: 'smooth'
-      });
+      section.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMenuOpen(false);
   };
-  return <div className="min-h-screen bg-secondary">
+
+  return (
+    <div className="min-h-screen bg-secondary">
       {/* Background Animation */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-golden/5 via-secondary to-secondary animate-pulse duration-1000"></div>
@@ -54,21 +78,16 @@ const Index = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-golden/20">
         <div className="container-custom">
           <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-4">
+            <button onClick={() => scrollToSection('home')} className="flex items-center gap-4">
               <img src="/lovable-uploads/f13a16c6-b452-42de-a9c1-2449aae035c0.png" alt="Logo" className="w-12 h-12 object-contain" />
               <span className="text-golden font-bold text-xl">Rincón del Chupi</span>
-            </div>
+            </button>
             
-            {/* Mobile Menu Button */}
             <button className="md:hidden text-golden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
-            {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
-              <button onClick={() => scrollToSection('home')} className="text-golden hover:text-white transition-colors">
-                Home
-              </button>
               <button onClick={() => scrollToSection('combos')} className="text-golden hover:text-white transition-colors">
                 Combos
               </button>
@@ -84,9 +103,6 @@ const Index = () => {
           {/* Mobile Menu */}
           <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} py-4 border-t border-golden/20`}>
             <div className="flex flex-col gap-4">
-              <button onClick={() => scrollToSection('home')} className="text-golden hover:text-white transition-colors text-left px-4">
-                Home
-              </button>
               <button onClick={() => scrollToSection('combos')} className="text-golden hover:text-white transition-colors text-left px-4">
                 Combos
               </button>
@@ -104,7 +120,7 @@ const Index = () => {
       {/* Hero Section */}
       <section id="home" className="relative min-h-[50vh] md:h-screen flex items-center justify-center text-white overflow-hidden pt-20">
         <div ref={videoRef} className="absolute inset-0 w-full h-full my-0 py-[81px]">
-          <div className="absolute inset-0 bg-black/50 mx-0 py-0 my-[158px]"></div>
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] mx-0 py-0 my-[158px]"></div>
         </div>
         <div className="relative z-10 text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 text-golden animate-fade-up">
@@ -179,17 +195,23 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-golden">
             NUESTROS COMBOS
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {combos.map((combo, index) => <div key={index} className="bg-black/40 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 p-6 border border-golden/20 hover:border-golden">
-                <h3 className="text-xl font-bold mb-2 text-golden">{combo.name}</h3>
-                <p className="text-gray-300 mb-4">{combo.description}</p>
-                <div className="flex justify-between items-center">
-                  <p className="text-golden text-2xl font-bold">${combo.price}</p>
-                  <button onClick={handleWhatsAppClick} className="bg-golden text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:bg-golden/90 hover:scale-105 active:scale-95">
-                    Pedir ahora
-                  </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {combos.map((combo, index) => (
+              <div key={index} className="relative group overflow-hidden rounded-xl">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10"></div>
+                <img src={combo.image} alt={combo.name} className="w-full h-full object-cover aspect-[3/4] group-hover:scale-110 transition-transform duration-500" />
+                <div className="absolute inset-x-0 bottom-0 p-6 z-20">
+                  <h3 className="text-xl font-bold mb-2 text-golden">{combo.name}</h3>
+                  <p className="text-gray-300 mb-4">{combo.description}</p>
+                  <div className="flex justify-between items-center">
+                    <p className="text-golden text-2xl font-bold">${combo.price}</p>
+                    <button onClick={handleWhatsAppClick} className="bg-golden text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:bg-golden/90 hover:scale-105 active:scale-95">
+                      ¡Lo quiero!
+                    </button>
+                  </div>
                 </div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -200,14 +222,18 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-golden">
             OTROS PRODUCTOS
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-black/40 rounded-xl shadow-lg hover:shadow-xl transition-all border border-golden/20 hover:border-golden p-6">
               <h3 className="text-xl font-bold mb-4 text-golden">Whiskys Importados</h3>
-              <p className="text-gray-300">Selección premium de las mejores marcas</p>
+              <p className="text-gray-300">Disfruta de las mejores marcas, perfectas para un regalo especial o para deleitar a tus invitados</p>
             </div>
             <div className="bg-black/40 rounded-xl shadow-lg hover:shadow-xl transition-all border border-golden/20 hover:border-golden p-6">
-              <h3 className="text-xl font-bold mb-4 text-golden">Vodkas Premium</h3>
-              <p className="text-gray-300">Variedades nacionales e importadas</p>
+              <h3 className="text-xl font-bold mb-4 text-golden">Cristalería</h3>
+              <p className="text-gray-300">Elegí copas y vasos que realzan la experiencia de tus bebidas favoritas</p>
+            </div>
+            <div className="bg-black/40 rounded-xl shadow-lg hover:shadow-xl transition-all border border-golden/20 hover:border-golden p-6">
+              <h3 className="text-xl font-bold mb-4 text-golden">Combos Personalizados</h3>
+              <p className="text-gray-300">Desde la previa con amigos hasta eventos exclusivos, tenemos el combo perfecto para cada ocasión</p>
             </div>
           </div>
         </div>
@@ -222,7 +248,7 @@ const Index = () => {
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 text-lg text-gray-300">
               <MapPin className="text-golden" />
-              <p>Consolidated Argentina RIS, Casa Deberina, Provincia de Buenos Aires</p>
+              <p>General José Artigas 3188, Gral. Pacheco, Provincia de Buenos Aires</p>
             </div>
           </div>
           <div className="aspect-video rounded-xl overflow-hidden shadow-lg border border-golden/20">
@@ -251,6 +277,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
