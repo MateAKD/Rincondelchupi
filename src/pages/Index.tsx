@@ -1,9 +1,25 @@
-import React, { useState } from "react";
-import { Truck, Snowflake, MapPin, Instagram, Phone, Menu, X } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { Truck, Snowflake, MapPin, Instagram, Phone, Menu, X, UserCog, Package, ThermometerSnowflake, GlassWater } from "lucide-react";
+import Vimeo from "@vimeo/player";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const videoRef = useRef<HTMLDivElement>(null);
   
+  useEffect(() => {
+    if (videoRef.current) {
+      const player = new Vimeo(videoRef.current, {
+        id: 1050812767,
+        background: true,
+        responsive: true,
+        autoplay: true,
+        loop: true,
+        muted: true,
+        controls: false
+      });
+    }
+  }, []);
+
   const combos = [
     {
       name: "Superclásico",
@@ -117,24 +133,45 @@ const Index = () => {
 
       {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center text-white overflow-hidden pt-20">
-        <div className="container-custom relative z-10 text-center animate-fade-up">
-          <div className="flex flex-col items-center justify-center gap-4 mb-8">
-            <img 
-              src="/lovable-uploads/f13a16c6-b452-42de-a9c1-2449aae035c0.png"
-              alt="Rincón del Chupi Logo"
-              className="w-40 h-40 object-contain animate-pulse mb-4"
-            />
-            <h1 className="text-5xl md:text-7xl font-black tracking-tight text-golden">
-              RINCÓN DEL CHUPI
-            </h1>
-          </div>
-          <div className="flex items-center justify-center gap-2 text-xl md:text-2xl text-golden font-medium mt-6">
-            <Truck className="animate-bounce" />
-            <p>Delivery a TODA zona norte</p>
-          </div>
-          <div className="mt-8 bg-black/80 py-4 px-6 rounded-lg inline-flex items-center gap-2 border border-golden">
-            <Snowflake className="text-golden animate-pulse" />
-            <p className="text-lg">Bebidas siempre FRÍAS</p>
+        <div ref={videoRef} className="absolute inset-0 w-full h-full"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
+      </section>
+
+      {/* Features Section */}
+      <section className="relative py-20 bg-secondary/90">
+        <div className="container-custom">
+          <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory">
+            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center">
+                <UserCog className="w-8 h-8 text-golden" />
+              </div>
+              <h3 className="text-xl font-bold text-golden">Atención Personalizada</h3>
+              <p className="text-gray-300">👤 Servicio exclusivo para cada cliente ✨</p>
+            </div>
+
+            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center">
+                <Package className="w-8 h-8 text-golden" />
+              </div>
+              <h3 className="text-xl font-bold text-golden">Combos Exclusivos</h3>
+              <p className="text-gray-300">🎁 Las mejores ofertas para vos 🔥</p>
+            </div>
+
+            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center">
+                <Truck className="w-8 h-8 text-golden" />
+              </div>
+              <h3 className="text-xl font-bold text-golden">Delivery Zona Norte</h3>
+              <p className="text-gray-300">🚚 Llegamos a toda la zona norte ⚡</p>
+            </div>
+
+            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center">
+                <ThermometerSnowflake className="w-8 h-8 text-golden" />
+              </div>
+              <h3 className="text-xl font-bold text-golden">Bebidas Frías</h3>
+              <p className="text-gray-300">🥶 Siempre bien frías 🧊</p>
+            </div>
           </div>
         </div>
       </section>
