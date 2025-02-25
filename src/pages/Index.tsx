@@ -1,8 +1,9 @@
-
-import React from "react";
-import { Truck, Snowflake, MapPin, Instagram, Phone } from "lucide-react";
+import React, { useState } from "react";
+import { Truck, Snowflake, MapPin, Instagram, Phone, Menu, X } from "lucide-react";
 
 const Index = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   const combos = [
     {
       name: "Superclásico",
@@ -25,10 +26,97 @@ const Index = () => {
     window.open("https://wa.me/1234567890", "_blank");
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-secondary">
+      {/* Background Animation */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-golden/5 via-secondary to-secondary animate-pulse duration-1000"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.5)_50%,transparent_100%)] animate-slide"></div>
+      </div>
+
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-golden/20">
+        <div className="container-custom">
+          <div className="flex items-center justify-between py-4">
+            <div className="flex items-center gap-4">
+              <img 
+                src="/lovable-uploads/f13a16c6-b452-42de-a9c1-2449aae035c0.png"
+                alt="Logo"
+                className="w-12 h-12 object-contain"
+              />
+              <span className="text-golden font-bold text-xl">Rincón del Chupi</span>
+            </div>
+            
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden text-golden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center gap-8">
+              <button onClick={() => scrollToSection('home')} className="text-golden hover:text-white transition-colors">
+                Home
+              </button>
+              <button onClick={() => scrollToSection('combos')} className="text-golden hover:text-white transition-colors">
+                Combos
+              </button>
+              <button onClick={() => scrollToSection('productos')} className="text-golden hover:text-white transition-colors">
+                Otros Productos
+              </button>
+              <button 
+                onClick={handleWhatsAppClick}
+                className="bg-golden text-black px-4 py-2 rounded-lg hover:bg-golden/90 transition-colors font-semibold"
+              >
+                Pedir Ya
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} py-4 border-t border-golden/20`}>
+            <div className="flex flex-col gap-4">
+              <button 
+                onClick={() => scrollToSection('home')}
+                className="text-golden hover:text-white transition-colors text-left px-4"
+              >
+                Home
+              </button>
+              <button 
+                onClick={() => scrollToSection('combos')}
+                className="text-golden hover:text-white transition-colors text-left px-4"
+              >
+                Combos
+              </button>
+              <button 
+                onClick={() => scrollToSection('productos')}
+                className="text-golden hover:text-white transition-colors text-left px-4"
+              >
+                Otros Productos
+              </button>
+              <button 
+                onClick={handleWhatsAppClick}
+                className="bg-golden text-black px-4 py-2 mx-4 rounded-lg hover:bg-golden/90 transition-colors font-semibold text-center"
+              >
+                Pedir Ya
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
+      <section id="home" className="relative h-screen flex items-center justify-center text-white overflow-hidden pt-20">
         <div className="container-custom relative z-10 text-center animate-fade-up">
           <div className="flex flex-col items-center justify-center gap-4 mb-8">
             <img 
@@ -52,7 +140,7 @@ const Index = () => {
       </section>
 
       {/* Combos Section */}
-      <section className="py-20 bg-secondary/90">
+      <section id="combos" className="relative py-20 bg-secondary/90">
         <div className="container-custom">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-golden">
             NUESTROS COMBOS
@@ -78,7 +166,7 @@ const Index = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-20 bg-secondary">
+      <section id="productos" className="relative py-20 bg-secondary">
         <div className="container-custom">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-golden">
             OTROS PRODUCTOS
@@ -97,7 +185,7 @@ const Index = () => {
       </section>
 
       {/* Location Section */}
-      <section className="py-20 bg-secondary/90">
+      <section className="relative py-20 bg-secondary/90">
         <div className="container-custom">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-golden">
             DÓNDE ENCONTRARNOS
@@ -122,7 +210,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-12">
+      <footer className="relative bg-black text-white py-12">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex gap-6">
