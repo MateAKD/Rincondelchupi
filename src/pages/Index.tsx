@@ -1,5 +1,6 @@
+
 import React, { useState, useRef, useEffect } from "react";
-import { Truck, Snowflake, MapPin, Instagram, Phone, Menu, X, UserCog, Package, ThermometerSnowflake, GlassWater } from "lucide-react";
+import { Truck, Snowflake, MapPin, Instagram, Phone, Menu, X, UserCog, Package, ThermometerSnowflake } from "lucide-react";
 import Vimeo from "@vimeo/player";
 
 const Index = () => {
@@ -140,37 +141,42 @@ const Index = () => {
       {/* Features Section */}
       <section className="relative py-20 bg-secondary/90">
         <div className="container-custom">
-          <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory">
-            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center">
+          <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory scrollbar-hide">
+            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:transform hover:-translate-y-1">
+              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
                 <UserCog className="w-8 h-8 text-golden" />
               </div>
               <h3 className="text-xl font-bold text-golden">Atención Personalizada</h3>
               <p className="text-gray-300">👤 Servicio exclusivo para cada cliente ✨</p>
             </div>
 
-            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center">
+            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:transform hover:-translate-y-1">
+              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
                 <Package className="w-8 h-8 text-golden" />
               </div>
               <h3 className="text-xl font-bold text-golden">Combos Exclusivos</h3>
               <p className="text-gray-300">🎁 Las mejores ofertas para vos 🔥</p>
             </div>
 
-            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center">
+            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:transform hover:-translate-y-1">
+              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
                 <Truck className="w-8 h-8 text-golden" />
               </div>
               <h3 className="text-xl font-bold text-golden">Delivery Zona Norte</h3>
               <p className="text-gray-300">🚚 Llegamos a toda la zona norte ⚡</p>
             </div>
 
-            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center">
+            <div className="snap-center shrink-0 w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:transform hover:-translate-y-1">
+              <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
                 <ThermometerSnowflake className="w-8 h-8 text-golden" />
               </div>
               <h3 className="text-xl font-bold text-golden">Bebidas Frías</h3>
               <p className="text-gray-300">🥶 Siempre bien frías 🧊</p>
+            </div>
+          </div>
+          <div className="mt-8 flex justify-center">
+            <div className="w-32 h-1 bg-golden/20 rounded-full">
+              <div className="w-16 h-full bg-golden rounded-full animate-pulse"></div>
             </div>
           </div>
         </div>
@@ -247,15 +253,15 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative bg-black text-white py-12">
+      <footer className="relative bg-black/95 text-white py-12 border-t border-golden/10">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex gap-6">
+            <div className="flex gap-8">
               <a
                 href="https://wa.me/1234567890"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-whatsapp hover:opacity-80 transition-opacity"
+                className="bg-[#25D366] hover:bg-[#20BA5C] text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110"
               >
                 <Phone size={24} />
               </a>
@@ -263,12 +269,12 @@ const Index = () => {
                 href="https://instagram.com/rincondelchupi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-instagram hover:opacity-80 transition-opacity"
+                className="bg-[#E1306C] hover:bg-[#C13584] text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110"
               >
                 <Instagram size={24} />
               </a>
             </div>
-            <p className="text-sm text-gray-400 text-center">
+            <p className="text-sm text-gray-400 text-center border-t md:border-t-0 pt-4 md:pt-0">
               © 2024 Rincón del Chupi – Consumir con moderación. Venta solo a mayores de 18 años.
             </p>
           </div>
