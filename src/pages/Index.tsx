@@ -1,12 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Truck, Snowflake, MapPin, Instagram, Phone, Menu, X, UserCog, Package, ThermometerSnowflake } from "lucide-react";
 import Vimeo from "@vimeo/player";
-
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
-  
   useEffect(() => {
     if (videoRef.current) {
       const player = new Vimeo(videoRef.current, {
@@ -20,39 +18,32 @@ const Index = () => {
       });
     }
   }, []);
-
-  const combos = [
-    {
-      name: "Superclásico",
-      description: "1.5L Mimoff + 5 Speed",
-      price: "14.200"
-    },
-    {
-      name: "Fiesta Total",
-      description: "Fernet 750ml + 2L Coca-Cola",
-      price: "12.500"
-    },
-    {
-      name: "Premium Mix",
-      description: "Jack Daniel's + 4 Red Bull",
-      price: "32.800"
-    }
-  ];
-
+  const combos = [{
+    name: "Superclásico",
+    description: "1.5L Mimoff + 5 Speed",
+    price: "14.200"
+  }, {
+    name: "Fiesta Total",
+    description: "Fernet 750ml + 2L Coca-Cola",
+    price: "12.500"
+  }, {
+    name: "Premium Mix",
+    description: "Jack Daniel's + 4 Red Bull",
+    price: "32.800"
+  }];
   const handleWhatsAppClick = () => {
     window.open("https://wa.me/1234567890", "_blank");
   };
-
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      section.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
     setIsMenuOpen(false);
   };
-
-  return (
-    <div className="min-h-screen bg-secondary">
+  return <div className="min-h-screen bg-secondary">
       {/* Background Animation */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-golden/5 via-secondary to-secondary animate-pulse duration-1000"></div>
@@ -64,19 +55,12 @@ const Index = () => {
         <div className="container-custom">
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center gap-4">
-              <img 
-                src="/lovable-uploads/f13a16c6-b452-42de-a9c1-2449aae035c0.png"
-                alt="Logo"
-                className="w-12 h-12 object-contain"
-              />
+              <img src="/lovable-uploads/f13a16c6-b452-42de-a9c1-2449aae035c0.png" alt="Logo" className="w-12 h-12 object-contain" />
               <span className="text-golden font-bold text-xl">Rincón del Chupi</span>
             </div>
             
             {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden text-golden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            <button className="md:hidden text-golden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
@@ -91,10 +75,7 @@ const Index = () => {
               <button onClick={() => scrollToSection('productos')} className="text-golden hover:text-white transition-colors">
                 Otros Productos
               </button>
-              <button 
-                onClick={handleWhatsAppClick}
-                className="bg-golden text-black px-4 py-2 rounded-lg hover:bg-golden/90 transition-colors font-semibold"
-              >
+              <button onClick={handleWhatsAppClick} className="bg-golden text-black px-4 py-2 rounded-lg hover:bg-golden/90 transition-colors font-semibold">
                 Pedir Ya
               </button>
             </div>
@@ -103,28 +84,16 @@ const Index = () => {
           {/* Mobile Menu */}
           <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} py-4 border-t border-golden/20`}>
             <div className="flex flex-col gap-4">
-              <button 
-                onClick={() => scrollToSection('home')}
-                className="text-golden hover:text-white transition-colors text-left px-4"
-              >
+              <button onClick={() => scrollToSection('home')} className="text-golden hover:text-white transition-colors text-left px-4">
                 Home
               </button>
-              <button 
-                onClick={() => scrollToSection('combos')}
-                className="text-golden hover:text-white transition-colors text-left px-4"
-              >
+              <button onClick={() => scrollToSection('combos')} className="text-golden hover:text-white transition-colors text-left px-4">
                 Combos
               </button>
-              <button 
-                onClick={() => scrollToSection('productos')}
-                className="text-golden hover:text-white transition-colors text-left px-4"
-              >
+              <button onClick={() => scrollToSection('productos')} className="text-golden hover:text-white transition-colors text-left px-4">
                 Otros Productos
               </button>
-              <button 
-                onClick={handleWhatsAppClick}
-                className="bg-golden text-black px-4 py-2 mx-4 rounded-lg hover:bg-golden/90 transition-colors font-semibold text-center"
-              >
+              <button onClick={handleWhatsAppClick} className="bg-golden text-black px-4 py-2 mx-4 rounded-lg hover:bg-golden/90 transition-colors font-semibold text-center">
                 Pedir Ya
               </button>
             </div>
@@ -134,37 +103,34 @@ const Index = () => {
 
       {/* Hero Section */}
       <section id="home" className="relative min-h-[50vh] md:h-screen flex items-center justify-center text-white overflow-hidden pt-20">
-        <div ref={videoRef} className="absolute inset-0 w-full h-full">
-          <div className="absolute inset-0 bg-black/50"></div>
+        <div ref={videoRef} className="absolute inset-0 w-full h-full my-0 py-[81px]">
+          <div className="absolute inset-0 bg-black/50 mx-0 py-0 my-[158px]"></div>
         </div>
         <div className="relative z-10 text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 text-golden animate-fade-up">
             Rincón del Chupi
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 mb-8 animate-fade-up" style={{animationDelay: '0.2s'}}>
+          <p className="text-xl md:text-2xl text-gray-200 mb-8 animate-fade-up" style={{
+          animationDelay: '0.2s'
+        }}>
             Las mejores bebidas, al mejor precio
           </p>
-          <button 
-            onClick={handleWhatsAppClick}
-            className="bg-golden text-black px-6 py-3 rounded-lg text-lg font-semibold hover:bg-golden/90 transition-all duration-300 animate-fade-up"
-            style={{animationDelay: '0.4s'}}
-          >
+          <button onClick={handleWhatsAppClick} className="bg-golden text-black px-6 py-3 rounded-lg text-lg font-semibold hover:bg-golden/90 transition-all duration-300 animate-fade-up" style={{
+          animationDelay: '0.4s'
+        }}>
             ¡Pedí ahora!
           </button>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="relative py-12 md:py-20 bg-secondary/90 overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-secondary/90 overflow-hidden my-[7px]">
         <div className="container-custom">
           <div className="relative">
-            <div 
-              ref={carouselRef}
-              className="flex gap-6 auto-scroll"
-              style={{ width: 'max-content' }}
-            >
-              {[...Array(2)].map((_, groupIndex) => (
-                <React.Fragment key={groupIndex}>
+            <div ref={carouselRef} className="flex gap-6 auto-scroll" style={{
+            width: 'max-content'
+          }}>
+              {[...Array(2)].map((_, groupIndex) => <React.Fragment key={groupIndex}>
                   <div className="shrink-0 w-[280px] md:w-80 bg-black/40 rounded-xl p-6 border border-golden/20 hover:border-golden transition-all duration-300 flex flex-col items-center text-center gap-4 hover:-translate-y-1">
                     <div className="w-16 h-16 rounded-full bg-golden/10 flex items-center justify-center transform transition-transform hover:scale-110">
                       <UserCog className="w-8 h-8 text-golden" />
@@ -196,8 +162,7 @@ const Index = () => {
                     <h3 className="text-xl font-bold text-golden">Bebidas Frías</h3>
                     <p className="text-gray-300">🥶 Siempre bien frías 🧊</p>
                   </div>
-                </React.Fragment>
-              ))}
+                </React.Fragment>)}
             </div>
           </div>
           <div className="mt-8 flex justify-center">
@@ -215,21 +180,16 @@ const Index = () => {
             NUESTROS COMBOS
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {combos.map((combo, index) => (
-              <div key={index} className="bg-black/40 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 p-6 border border-golden/20 hover:border-golden">
+            {combos.map((combo, index) => <div key={index} className="bg-black/40 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 p-6 border border-golden/20 hover:border-golden">
                 <h3 className="text-xl font-bold mb-2 text-golden">{combo.name}</h3>
                 <p className="text-gray-300 mb-4">{combo.description}</p>
                 <div className="flex justify-between items-center">
                   <p className="text-golden text-2xl font-bold">${combo.price}</p>
-                  <button 
-                    onClick={handleWhatsAppClick}
-                    className="bg-golden text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:bg-golden/90 hover:scale-105 active:scale-95"
-                  >
+                  <button onClick={handleWhatsAppClick} className="bg-golden text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:bg-golden/90 hover:scale-105 active:scale-95">
                     Pedir ahora
                   </button>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -266,14 +226,9 @@ const Index = () => {
             </div>
           </div>
           <div className="aspect-video rounded-xl overflow-hidden shadow-lg border border-golden/20">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.186588775371!2d-58.5115!3d-34.5225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDMxJzIxLjAiUyA1OMKwMzAnNDEuNCJX!5e0!3m2!1sen!2sar!4v1635441719589!5m2!1sen!2sar"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.186588775371!2d-58.5115!3d-34.5225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDMxJzIxLjAiUyA1OMKwMzAnNDEuNCJX!5e0!3m2!1sen!2sar!4v1635441719589!5m2!1sen!2sar" width="100%" height="100%" style={{
+            border: 0
+          }} allowFullScreen loading="lazy"></iframe>
           </div>
         </div>
       </section>
@@ -283,20 +238,10 @@ const Index = () => {
         <div className="container-custom">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex gap-8">
-              <a
-                href="https://wa.me/1234567890"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#25D366] hover:bg-[#20BA5C] text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110"
-              >
+              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#20BA5C] text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110">
                 <Phone size={24} />
               </a>
-              <a
-                href="https://instagram.com/rincondelchupi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#E1306C] hover:bg-[#C13584] text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110"
-              >
+              <a href="https://instagram.com/rincondelchupi" target="_blank" rel="noopener noreferrer" className="bg-[#E1306C] hover:bg-[#C13584] text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110">
                 <Instagram size={24} />
               </a>
             </div>
@@ -306,8 +251,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
