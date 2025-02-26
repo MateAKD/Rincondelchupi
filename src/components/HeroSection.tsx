@@ -37,7 +37,7 @@ const HeroSection = ({
           <button onClick={handleWhatsAppClick} className="bg-golden text-black px-4 py-2 md:px-6 md:py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-golden/90 transition-all duration-300 animate-fade-up shadow-md" style={{
           animationDelay: '0.4s'
         }}>
-            ¡Pedí ahora!
+            ¡Pedí ya!
           </button>
         </div>
       </div>
