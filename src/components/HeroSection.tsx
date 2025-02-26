@@ -24,11 +24,11 @@ const HeroSection = ({ handleWhatsAppClick }: HeroSectionProps) => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-[60vh] md:h-screen flex items-center justify-center text-white overflow-hidden">
+    <section id="home" className="relative h-[85vh] flex items-center justify-center text-white overflow-hidden">
       <div ref={videoRef} className="absolute inset-0 w-full h-full">
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-[4px]"></div>
+        <div className="absolute inset-0 bg-black/85 backdrop-blur-[6px]"></div>
       </div>
-      <div className="relative z-10 text-center px-4 py-8 md:py-0">
+      <div className="relative z-10 text-center px-4">
         <h1 className="text-3xl md:text-6xl font-bold mb-3 md:mb-4 text-golden animate-fade-up">
           Rincón del Chupi
         </h1>
