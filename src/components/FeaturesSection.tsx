@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { UserCog, Package, Truck, ThermometerSnowflake } from 'lucide-react';
 
 const FeaturesSection = () => {
@@ -7,6 +7,33 @@ const FeaturesSection = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+
+  useEffect(() => {
+    if (window.innerWidth > 768) {
+      const scrollContainer = carouselRef.current;
+      if (!scrollContainer) return;
+
+      const scrollWidth = scrollContainer.scrollWidth;
+      const clientWidth = scrollContainer.clientWidth;
+      let currentScroll = 0;
+
+      const animate = () => {
+        if (!isDragging && window.innerWidth > 768) {
+          currentScroll += 1;
+          if (currentScroll >= scrollWidth / 2) {
+            currentScroll = 0;
+          }
+          if (scrollContainer) {
+            scrollContainer.scrollLeft = currentScroll;
+          }
+        }
+        requestAnimationFrame(animate);
+      };
+
+      const animation = requestAnimationFrame(animate);
+      return () => cancelAnimationFrame(animation);
+    }
+  }, [isDragging]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
@@ -67,7 +94,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="relative py-6 md:py-16 bg-secondary/90 overflow-hidden -mt-1">
+    <section className="relative py-4 md:py-16 bg-secondary/90 overflow-hidden">
       <div className="container-custom">
         <div className="relative overflow-hidden">
           <div
@@ -85,7 +112,7 @@ const FeaturesSection = () => {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleDragEnd}
           >
-            {[...Array(2)].map((_, groupIndex) => (
+            {[...Array(3)].map((_, groupIndex) => (
               features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
