@@ -3,6 +3,9 @@ import React from 'react';
 import { MapPin } from 'lucide-react';
 
 const LocationSection = () => {
+  const address = "General José Artigas 3188, Gral. Pacheco, Provincia de Buenos Aires";
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
   return (
     <section className="relative py-20 bg-secondary/90">
       <div className="container-custom">
@@ -10,14 +13,31 @@ const LocationSection = () => {
           DÓNDE ENCONTRARNOS
         </h2>
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 text-lg text-gray-300">
+          <a 
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 text-lg text-gray-300 hover:text-golden transition-colors"
+          >
             <MapPin className="text-golden" />
-            <p>General José Artigas 3188, Gral. Pacheco, Provincia de Buenos Aires</p>
-          </div>
+            <p>{address}</p>
+          </a>
         </div>
-        <div className="aspect-video rounded-xl overflow-hidden shadow-lg border border-golden/20">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.186588775371!2d-58.5115!3d-34.5225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDMxJzIxLjAiUyA1OMKwMzAnNDEuNCJX!5e0!3m2!1sen!2sar!4v1635441719589!5m2!1sen!2sar" width="100%" height="100%" style={{border: 0}} allowFullScreen loading="lazy"></iframe>
-        </div>
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block aspect-video rounded-xl overflow-hidden shadow-lg border border-golden/20 hover:border-golden transition-all duration-300"
+        >
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.186588775371!2d-58.5115!3d-34.5225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDMxJzIxLjAiUyA1OMKwMzAnNDEuNCJX!5e0!3m2!1sen!2sar!4v1635441719589!5m2!1sen!2sar" 
+            width="100%" 
+            height="100%" 
+            style={{border: 0}} 
+            allowFullScreen 
+            loading="lazy"
+          ></iframe>
+        </a>
       </div>
     </section>
   );

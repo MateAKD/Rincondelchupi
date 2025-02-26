@@ -82,12 +82,12 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-320px * 3));
+    transform: translateX(calc(-100%));
   }
 }
 
 .auto-scroll {
-  animation: autoScroll 10s linear infinite;
+  animation: autoScroll 30s linear infinite;
   animation-play-state: running;
 }
 
