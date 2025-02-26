@@ -67,7 +67,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="relative py-8 md:py-16 bg-secondary/90 overflow-hidden">
+    <section className="relative py-6 md:py-16 bg-secondary/90 overflow-hidden -mt-1">
       <div className="container-custom">
         <div className="relative overflow-hidden">
           <div

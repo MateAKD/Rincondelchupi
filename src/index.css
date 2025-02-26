@@ -87,12 +87,18 @@
 }
 
 .auto-scroll {
-  animation: autoScroll 30s linear infinite;
+  animation: autoScroll 40s linear infinite;
   animation-play-state: running;
 }
 
 .auto-scroll:hover {
   animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .auto-scroll {
+    animation: none;
+  }
 }
 
 .scrollbar-hide::-webkit-scrollbar {
