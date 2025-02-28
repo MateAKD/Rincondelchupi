@@ -1,12 +1,16 @@
+
 import React, { useRef, useEffect } from 'react';
 import Vimeo from '@vimeo/player';
+
 interface HeroSectionProps {
   handleWhatsAppClick: () => void;
 }
+
 const HeroSection = ({
   handleWhatsAppClick
 }: HeroSectionProps) => {
   const videoRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (videoRef.current) {
       const player = new Vimeo(videoRef.current, {
@@ -20,11 +24,17 @@ const HeroSection = ({
       });
     }
   }, []);
-  return <section id="home" className="relative h-screen md:h-[70vh] mt-[56px] flex items-center justify-center text-white overflow-hidden">
-      <div ref={videoRef} className="absolute inset-0 w-full h-full" style={{
-      filter: 'blur(16px)'
-    }}>
-        
+
+  return (
+    <section id="home" className="relative h-screen md:h-[70vh] mt-[56px] flex items-center justify-center text-white overflow-hidden">
+      <div 
+        ref={videoRef} 
+        className="absolute inset-0 w-full h-full object-cover object-center" 
+        style={{
+          filter: 'blur(16px)'
+        }}
+      >
+        {/* Video is loaded here by Vimeo player */}
       </div>
       
       <div className="relative z-10 text-center px-4 max-w-[90%] md:max-w-[70%] mx-auto">
@@ -33,17 +43,23 @@ const HeroSection = ({
             Rincón del Chupi
           </h1>
           <p className="text-sm md:text-2xl text-gray-200 mb-4 animate-fade-up drop-shadow" style={{
-          animationDelay: '0.2s'
-        }}>
+            animationDelay: '0.2s'
+          }}>
             Las mejores bebidas, al mejor precio
           </p>
-          <button onClick={handleWhatsAppClick} className="bg-golden text-black px-4 py-2 md:px-6 md:py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-golden/90 transition-all duration-300 animate-fade-up shadow-md" style={{
-          animationDelay: '0.4s'
-        }}>
+          <button 
+            onClick={handleWhatsAppClick} 
+            className="bg-golden text-black px-4 py-2 md:px-6 md:py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-golden/90 transition-all duration-300 animate-fade-up shadow-md" 
+            style={{
+              animationDelay: '0.4s'
+            }}
+          >
             ¡Pedí ya!
           </button>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
