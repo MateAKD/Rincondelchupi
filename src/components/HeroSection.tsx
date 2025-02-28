@@ -1,5 +1,5 @@
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Vimeo from '@vimeo/player';
 
 interface HeroSectionProps {
@@ -10,6 +10,7 @@ const HeroSection = ({
   handleWhatsAppClick
 }: HeroSectionProps) => {
   const videoRef = useRef<HTMLDivElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -22,16 +23,26 @@ const HeroSection = ({
         muted: true,
         controls: false
       });
+
+      player.ready().then(() => {
+        setVideoLoaded(true);
+      });
     }
   }, []);
 
   return (
-    <section id="home" className="relative h-screen md:h-[70vh] mt-[56px] flex items-center justify-center text-white overflow-hidden">
+    <section 
+      id="home" 
+      className="relative h-screen md:h-[70vh] mt-[56px] flex items-center justify-center text-white overflow-hidden"
+    >
       <div 
         ref={videoRef} 
-        className="absolute inset-0 w-full h-full object-cover object-center" 
+        className="absolute inset-0 w-full h-full" 
         style={{
-          filter: 'blur(16px)'
+          filter: 'blur(20px)',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          overflow: 'hidden'
         }}
       >
         {/* Video is loaded here by Vimeo player */}
