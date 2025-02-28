@@ -33,7 +33,7 @@ const HeroSection = ({
   return (
     <section 
       id="home" 
-      className="relative h-screen md:h-[70vh] mt-[56px] flex items-center justify-center text-white overflow-hidden"
+      className="relative h-[60vh] mt-[56px] flex items-center justify-center text-white overflow-hidden"
     >
       <div 
         ref={videoRef} 
