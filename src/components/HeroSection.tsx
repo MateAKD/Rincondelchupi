@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import Vimeo from '@vimeo/player';
 interface HeroSectionProps {
@@ -20,13 +21,14 @@ const HeroSection = ({
       });
     }
   }, []);
-  return <section id="home" className="relative h-[60vh] md:h-[70vh] mt-[64px] flex items-start justify-center text-white overflow-hidden">
-      <div ref={videoRef} className="absolute inset-0 w-full h-full py-0 my-[18px]">
+  return <section id="home" className="relative h-screen md:h-[70vh] mt-[56px] flex items-center justify-center text-white overflow-hidden">
+      <div ref={videoRef} className="absolute inset-0 w-full h-full" style={{ filter: 'blur(16px)' }}>
         
       </div>
-      <div className="relative z-10 text-center px-4 max-w-[85%] md:max-w-[70%] mx-auto mt-12 md:mt-16">
-        <div className="p-4 rounded-lg bg-black/30 border border-black/20 shadow-lg">
-          <h1 className="text-2xl md:text-6xl font-bold mb-3 text-golden animate-fade-up drop-shadow-lg">
+      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="relative z-10 text-center px-4 max-w-[90%] md:max-w-[70%] mx-auto">
+        <div className="p-4 md:p-6 rounded-lg bg-black/40 border border-black/30 shadow-xl backdrop-blur-sm">
+          <h1 className="text-3xl md:text-6xl font-bold mb-3 text-golden animate-fade-up drop-shadow-lg">
             Rincón del Chupi
           </h1>
           <p className="text-sm md:text-2xl text-gray-200 mb-4 animate-fade-up drop-shadow" style={{

@@ -19,7 +19,7 @@ const FeaturesSection = () => {
 
       const animate = () => {
         if (!isDragging && window.innerWidth > 768) {
-          currentScroll += 1;
+          currentScroll += 0.5;
           if (currentScroll >= scrollWidth / 2) {
             currentScroll = 0;
           }
@@ -94,7 +94,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="relative py-4 md:py-16 bg-secondary/90 overflow-hidden">
+    <section className="py-8 md:py-12 bg-secondary/90 overflow-hidden">
       <div className="container-custom">
         <div className="relative overflow-hidden">
           <div
