@@ -33,13 +33,13 @@ const HeroSection = ({
   return (
     <section 
       id="home" 
-      className="relative h-[60vh] mt-[56px] flex items-center justify-center text-white overflow-hidden"
+      className="relative h-[50vh] mt-[56px] flex items-center justify-center text-white overflow-hidden"
     >
       <div 
         ref={videoRef} 
         className="absolute inset-0 w-full h-full" 
         style={{
-          filter: 'blur(20px)',
+          filter: 'blur(10px)',
           objectFit: 'cover',
           objectPosition: 'center',
           overflow: 'hidden'
