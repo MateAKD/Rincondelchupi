@@ -9,30 +9,28 @@ const FeaturesSection = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
 
   useEffect(() => {
-    if (window.innerWidth > 768) {
-      const scrollContainer = carouselRef.current;
-      if (!scrollContainer) return;
+    const scrollContainer = carouselRef.current;
+    if (!scrollContainer) return;
 
-      const scrollWidth = scrollContainer.scrollWidth;
-      const clientWidth = scrollContainer.clientWidth;
-      let currentScroll = 0;
+    const scrollWidth = scrollContainer.scrollWidth;
+    const clientWidth = scrollContainer.clientWidth;
+    let currentScroll = 0;
 
-      const animate = () => {
-        if (!isDragging && window.innerWidth > 768) {
-          currentScroll += 0.5;
-          if (currentScroll >= scrollWidth / 2) {
-            currentScroll = 0;
-          }
-          if (scrollContainer) {
-            scrollContainer.scrollLeft = currentScroll;
-          }
+    const animate = () => {
+      if (!isDragging) {
+        currentScroll += 0.5;
+        if (currentScroll >= scrollWidth - clientWidth) {
+          currentScroll = 0;
         }
-        requestAnimationFrame(animate);
-      };
+        if (scrollContainer) {
+          scrollContainer.scrollLeft = currentScroll;
+        }
+      }
+      requestAnimationFrame(animate);
+    };
 
-      const animation = requestAnimationFrame(animate);
-      return () => cancelAnimationFrame(animation);
-    }
+    const animation = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animation);
   }, [isDragging]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
