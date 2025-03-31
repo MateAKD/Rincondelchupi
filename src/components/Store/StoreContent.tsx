@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProductCard from "./ProductCard";
 import { useCart, DeliveryMethod } from "./CartProvider";
 import { Button } from "@/components/ui/button";
+import { Truck, Store, ArrowRight } from "lucide-react";
 
 // Product categories
 const categories = [
@@ -246,34 +247,49 @@ const StoreContent = () => {
 
   return (
     <>
-      <div className="mb-6 flex justify-center">
-        <div className="inline-flex items-center p-1 rounded-lg bg-gray-100 space-x-2">
-          <Button
-            variant={deliveryMethod === 'delivery' ? 'default' : 'outline'}
-            onClick={() => setDeliveryMethod('delivery')}
-            className={deliveryMethod === 'delivery' ? 'bg-primary' : ''}
-          >
-            Delivery
-          </Button>
-          <Button
-            variant={deliveryMethod === 'pickup' ? 'default' : 'outline'}
-            onClick={() => setDeliveryMethod('pickup')}
-            className={deliveryMethod === 'pickup' ? 'bg-primary' : ''}
-          >
-            Retiro en local
-          </Button>
+      <div className="mb-8">
+        <div className="bg-black/40 backdrop-blur-sm rounded-xl border border-golden/20 p-4 flex flex-col md:flex-row md:items-center gap-4">
+          <p className="text-golden font-medium flex items-center gap-2">
+            <ArrowRight className="h-4 w-4" /> Selecciona método de entrega:
+          </p>
+          <div className="flex gap-3">
+            <Button
+              variant={deliveryMethod === 'delivery' ? 'default' : 'outline'}
+              onClick={() => setDeliveryMethod('delivery')}
+              className={`flex items-center gap-2 ${
+                deliveryMethod === 'delivery' 
+                  ? 'bg-golden text-black hover:bg-golden/90' 
+                  : 'border-golden/50 text-golden hover:bg-golden/10'
+              }`}
+              size="sm"
+            >
+              <Truck className="h-4 w-4" /> Delivery
+            </Button>
+            <Button
+              variant={deliveryMethod === 'pickup' ? 'default' : 'outline'}
+              onClick={() => setDeliveryMethod('pickup')}
+              className={`flex items-center gap-2 ${
+                deliveryMethod === 'pickup' 
+                  ? 'bg-golden text-black hover:bg-golden/90' 
+                  : 'border-golden/50 text-golden hover:bg-golden/10'
+              }`}
+              size="sm"
+            >
+              <Store className="h-4 w-4" /> Retiro en local
+            </Button>
+          </div>
         </div>
       </div>
       
       <Tabs defaultValue="Todos" className="w-full">
-        <div className="overflow-x-auto pb-2">
-          <TabsList className="w-full flex justify-start">
+        <div className="overflow-x-auto pb-2 mb-4">
+          <TabsList className="bg-black/40 border border-golden/20 p-1">
             {categories.map(category => (
               <TabsTrigger 
                 key={category}
                 value={category}
                 onClick={() => setActiveCategory(category)}
-                className="whitespace-nowrap"
+                className="whitespace-nowrap data-[state=active]:bg-golden data-[state=active]:text-black"
               >
                 {category}
               </TabsTrigger>
@@ -281,7 +297,7 @@ const StoreContent = () => {
           </TabsList>
         </div>
         
-        <TabsContent value={activeCategory} className="mt-6">
+        <TabsContent value={activeCategory} className="mt-6 animate-fade-in">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />

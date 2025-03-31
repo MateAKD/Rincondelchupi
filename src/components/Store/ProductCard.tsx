@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Plus, Minus, ShoppingCart } from "lucide-react";
 import { useCart } from "./CartProvider";
 import { useToast } from "@/hooks/use-toast";
@@ -63,60 +64,60 @@ const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="rounded-lg border bg-white shadow-sm p-4 flex flex-col h-full transition-all duration-300 hover:shadow-md">
+    <Card className="overflow-hidden border border-golden/30 bg-black/40 backdrop-blur-sm text-white hover:shadow-md hover:shadow-golden/10 transition-all duration-300 group">
       {product.image && (
-        <div className="mb-4 aspect-square overflow-hidden rounded-md">
+        <div className="aspect-square overflow-hidden">
           <img
             src={product.image}
             alt={product.name}
-            className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
       )}
       
-      <div className="flex-grow">
-        <h3 className="font-semibold text-lg">{product.name}</h3>
+      <CardContent className="p-4">
+        <h3 className="font-semibold text-lg text-golden">{product.name}</h3>
         {product.description && (
-          <p className="text-sm text-gray-600 mt-1">{product.description}</p>
+          <p className="text-sm text-gray-300 mt-1">{product.description}</p>
         )}
-        <p className="mt-2 font-bold text-primary text-xl">${formatPrice(product.price)}</p>
-      </div>
-      
-      <div className="mt-4">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-sm font-medium">Cantidad:</span>
-          <div className="flex items-center border rounded-md">
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="px-2 h-8" 
-              onClick={decrementQuantity}
-              disabled={quantity <= 1}
-            >
-              <Minus className="h-4 w-4" />
-            </Button>
-            <span className="w-8 text-center">{quantity}</span>
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="px-2 h-8" 
-              onClick={incrementQuantity}
-              disabled={quantity >= 10}
-            >
-              <Plus className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
+        <p className="mt-2 font-bold text-primary text-2xl">${formatPrice(product.price)}</p>
         
-        <Button 
-          className="w-full bg-primary hover:bg-primary/90" 
-          onClick={handleAddToCart}
-        >
-          <ShoppingCart className="mr-2 h-4 w-4" />
-          Añadir al carrito
-        </Button>
-      </div>
-    </div>
+        <div className="mt-4 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-gray-300">Cantidad:</span>
+            <div className="flex items-center border border-golden/30 rounded-md bg-black/20">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="px-2 h-8 text-golden hover:text-white hover:bg-transparent" 
+                onClick={decrementQuantity}
+                disabled={quantity <= 1}
+              >
+                <Minus className="h-4 w-4" />
+              </Button>
+              <span className="w-8 text-center text-white">{quantity}</span>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="px-2 h-8 text-golden hover:text-white hover:bg-transparent" 
+                onClick={incrementQuantity}
+                disabled={quantity >= 10}
+              >
+                <Plus className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+          
+          <Button 
+            className="w-full bg-golden hover:bg-golden/90 text-black font-semibold" 
+            onClick={handleAddToCart}
+          >
+            <ShoppingCart className="mr-2 h-4 w-4" />
+            Añadir al carrito
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
