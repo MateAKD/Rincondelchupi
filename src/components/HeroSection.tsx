@@ -1,6 +1,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import Vimeo from '@vimeo/player';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface HeroSectionProps {
   handleWhatsAppClick: () => void;
@@ -11,6 +12,7 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   const videoRef = useRef<HTMLDivElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (videoRef.current) {
@@ -50,7 +52,7 @@ const HeroSection = ({
       
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="px-4 max-w-[90%] md:max-w-[70%] mx-auto">
-          <div className="p-4 md:p-6 rounded-lg bg-black/40 border border-black/30 shadow-xl backdrop-blur-sm">
+          <div className={`p-4 md:p-6 rounded-lg bg-black/40 border border-black/30 shadow-xl backdrop-blur-sm ${isMobile ? 'w-[90%] mx-auto' : ''}`}>
             <h1 className="text-3xl md:text-6xl font-bold mb-3 text-golden animate-fade-up drop-shadow-lg">
               Rincón del Chupi
             </h1>

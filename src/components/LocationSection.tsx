@@ -30,12 +30,13 @@ const LocationSection = () => {
           className="block aspect-video rounded-xl overflow-hidden shadow-lg border border-golden/20 hover:border-golden transition-all duration-300"
         >
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.186588775371!2d-58.5115!3d-34.5225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDMxJzIxLjAiUyA1OMKwMzAnNDEuNCJX!5e0!3m2!1sen!2sar!4v1635441719589!5m2!1sen!2sar" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3288.5438984278363!2d-58.64444912346467!3d-34.458644152200535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bca11b3ccb5057%3A0x5c3c5bfabb5ef775!2sGral.%20Jos%C3%A9%20Gervasio%20Artigas%203188%2C%20B1617GUJ%20General%20Pacheco%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1sen!2sar!4v1704999423501!5m2!1sen!2sar" 
             width="100%" 
             height="100%" 
             style={{border: 0}} 
             allowFullScreen 
             loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </a>
       </div>
