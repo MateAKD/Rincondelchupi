@@ -35,7 +35,7 @@ const HeroSection = ({
   return (
     <section 
       id="home" 
-      className="relative h-[50vh] mt-[56px] flex items-center justify-center text-white overflow-hidden"
+      className="relative h-[50vh] mt-[56px] flex items-start md:items-center justify-center text-white overflow-hidden"
     >
       <div 
         ref={videoRef} 
@@ -50,7 +50,7 @@ const HeroSection = ({
         {/* Video is loaded here by Vimeo player */}
       </div>
       
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-start pt-8 md:items-center justify-center">
         <div className="px-4 max-w-[90%] md:max-w-[70%] mx-auto">
           <div className={`p-4 md:p-6 rounded-lg bg-black/40 border border-black/30 shadow-xl backdrop-blur-sm ${isMobile ? 'w-[90%] mx-auto' : ''}`}>
             <h1 className="text-3xl md:text-6xl font-bold mb-3 text-golden animate-fade-up drop-shadow-lg">
