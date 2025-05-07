@@ -39,7 +39,8 @@ const Index = () => {
   }];
 
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/1234567890", "_blank");
+    const message = "Hola! Me gustaría hacer un pedido. ¿Es para delivery o retiro en el local?";
+    window.open(`https://wa.me/1234567890?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -54,11 +55,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-secondary">
-      <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-golden/5 via-secondary to-secondary animate-pulse duration-1000 my-0 py-0"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.5)_50%,transparent_100%)] animate-slide"></div>
-      </div>
-
       <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} scrollToSection={scrollToSection} handleWhatsAppClick={handleWhatsAppClick} />
       <HeroSection handleWhatsAppClick={handleWhatsAppClick} />
       <FeaturesSection />

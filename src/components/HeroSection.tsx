@@ -35,13 +35,13 @@ const HeroSection = ({
   return (
     <section 
       id="home" 
-      className="relative h-[50vh] mt-[56px] flex items-start md:items-center justify-center text-white overflow-hidden"
+      className="relative min-h-screen mt-[56px] flex items-center justify-center text-white overflow-hidden"
     >
       <div 
         ref={videoRef} 
         className="absolute inset-0 w-full h-full" 
         style={{
-          filter: 'blur(10px)',
+          filter: 'brightness(0.5)',
           objectFit: 'cover',
           objectPosition: 'center',
           overflow: 'hidden'
@@ -50,25 +50,30 @@ const HeroSection = ({
         {/* Video is loaded here by Vimeo player */}
       </div>
       
-      <div className="absolute inset-0 flex items-start pt-8 md:items-center justify-center">
-        <div className="px-4 max-w-[90%] md:max-w-[70%] mx-auto">
-          <div className={`p-4 md:p-6 rounded-lg bg-black/40 border border-black/30 shadow-xl backdrop-blur-sm ${isMobile ? 'w-[90%] mx-auto' : ''}`}>
-            <h1 className="text-3xl md:text-6xl font-bold mb-3 text-golden animate-fade-up drop-shadow-lg">
-              Rincón del Chupi
-            </h1>
-            <p className="text-sm md:text-2xl text-gray-200 mb-4 animate-fade-up drop-shadow" style={{
-              animationDelay: '0.2s'
-            }}>
-              Las mejores bebidas, al mejor precio
-            </p>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-7xl font-bold mb-4 text-golden animate-fade-up drop-shadow-xl">
+            Rincón del Chupi
+          </h1>
+          <p className="text-lg md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto animate-fade-up drop-shadow-lg" style={{
+            animationDelay: '0.2s'
+          }}>
+            Las mejores bebidas premium, al mejor precio
+          </p>
+          <div className="flex flex-col md:flex-row gap-4 justify-center animate-fade-up" style={{
+            animationDelay: '0.4s'
+          }}>
             <button 
               onClick={handleWhatsAppClick} 
-              className="bg-golden text-black px-4 py-2 md:px-6 md:py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-golden/90 transition-all duration-300 animate-fade-up shadow-md" 
-              style={{
-                animationDelay: '0.4s'
-              }}
+              className="bg-golden text-black px-8 py-3 rounded-lg text-lg font-semibold hover:bg-golden/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
             >
               ¡Pedí ya!
+            </button>
+            <button 
+              onClick={() => document.getElementById('combos')?.scrollIntoView({behavior: 'smooth'})} 
+              className="bg-black/50 backdrop-blur-sm border border-golden/30 text-golden px-8 py-3 rounded-lg text-lg font-semibold hover:bg-black/70 hover:border-golden transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Ver combos
             </button>
           </div>
         </div>
