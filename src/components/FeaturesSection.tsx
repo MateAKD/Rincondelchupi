@@ -77,10 +77,10 @@ const FeaturesSection = () => {
                       zIndex: 1,
                       transform: isActive ? 'scale(1.08)' : 'scale(0.92)',
                     }}>
-                    <h3 className="text-3xl md:text-4xl font-bold text-golden mb-6 relative z-10 flex items-center justify-center gap-2">
+                    <h3 className="text-2xl md:text-4xl font-bold text-golden mb-6 relative z-10 flex items-center justify-center gap-2">
                       {feature.title}
                     </h3>
-                    <p className="text-golden text-xl font-medium flex items-center justify-center gap-2 relative z-10">
+                    <p className="text-base md:text-xl font-medium flex items-center justify-center gap-2 relative z-10 text-golden break-words">
                       {feature.description}
                     </p>
                   </div>

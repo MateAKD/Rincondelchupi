@@ -45,12 +45,15 @@ const HeroSection = ({
           <motion.img
             src="/lovable-uploads/logo.png"
             alt="Logo Background"
-            className="object-contain opacity-10 h-full w-auto"
+            className="object-contain opacity-10"
             style={{
-              maxHeight: isMobile ? '80%' : '100%',
-              maxWidth: isMobile ? '80%' : '100%',
-              minHeight: '60px',
+              width: isMobile ? '70%' : '60%',
+              height: isMobile ? '70%' : '60%',
+              maxWidth: '90%',
+              maxHeight: '90%',
               minWidth: '60px',
+              minHeight: '60px',
+              marginTop: isMobile ? '24px' : 0,
             }}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 0.1, scale: 1 }}

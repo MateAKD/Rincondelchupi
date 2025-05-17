@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "./CartProvider";
-import { Trash2, Minus, Plus, ShoppingCart, Truck, Store } from "lucide-react";
+import { Trash2, Minus, Plus, ShoppingCart, Truck, Store, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Cart = () => {
@@ -41,7 +41,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="h-full flex flex-col text-white">
+    <div className="h-full flex flex-col text-white relative">
       <div className="mb-4">
         <h3 className="text-2xl font-bold text-golden">Mi Carrito</h3>
         <p className="text-sm text-gray-300 flex items-center gap-2 mt-1">

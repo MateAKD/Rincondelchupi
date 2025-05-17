@@ -20,7 +20,7 @@ const AboutSection = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-black/90">
+    <section id="nosotros" className="py-24 bg-black/90">
       <div className="container-custom">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-golden">Sobre nosotros</h2>
         <div className="max-w-3xl mx-auto bg-golden rounded-2xl p-6 md:p-12 flex flex-col gap-2 shadow-lg">
