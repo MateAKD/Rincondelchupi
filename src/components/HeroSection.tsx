@@ -63,7 +63,7 @@ const HeroSection = ({
               maxWidth: '100%',
               minWidth: '60px',
               minHeight: '60px',
-              marginTop: isMobile ? '24px' : 0,
+              marginTop: '4rem',
             }}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={logoVisible ? { opacity: 0.1, scale: 1 } : { opacity: 0, scale: 0.95 }}
