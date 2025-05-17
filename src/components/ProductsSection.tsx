@@ -27,7 +27,7 @@ const ProductsSection = () => {
           className="text-5xl md:text-6xl font-bold text-center mb-16 text-golden"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0 }}
           viewport={{ once: true }}
         >
           Otros Productos
@@ -39,7 +39,7 @@ const ProductsSection = () => {
               className="flex flex-col items-center text-center"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 + index * 0.15 }}
+              transition={{ duration: 0.4, delay: 0 }}
               viewport={{ once: true }}
             >
               <img src={product.image} alt={product.title} className="h-56 md:h-64 object-contain mb-8" />

@@ -15,7 +15,7 @@ const LocationSection = () => {
           className="text-3xl md:text-5xl font-bold text-center mb-16 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-golden"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0 }}
           viewport={{ once: true }}
         >
           DÓNDE ENCONTRARNOS
@@ -25,7 +25,7 @@ const LocationSection = () => {
           className="flex flex-col md:flex-row gap-8 items-center md:items-start"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0 }}
           viewport={{ once: true }}
         >
           <div className="w-full md:w-1/2 space-y-8">

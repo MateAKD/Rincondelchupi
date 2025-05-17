@@ -47,7 +47,7 @@ const FeaturesSection = () => (
         spaceBetween={32}
         centeredSlides
         loop
-        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        autoplay={{ delay: 1200, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         className="w-full max-w-none px-0 swiper-overflow-visible"
         breakpoints={{
