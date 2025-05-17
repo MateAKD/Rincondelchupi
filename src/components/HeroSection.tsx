@@ -12,6 +12,7 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   const videoRef = useRef<HTMLDivElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [logoVisible, setLogoVisible] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -32,6 +33,15 @@ const HeroSection = ({
     }
   }, []);
 
+  useEffect(() => {
+    if (videoLoaded) {
+      const timeout = setTimeout(() => setLogoVisible(true), 2000);
+      return () => clearTimeout(timeout);
+    } else {
+      setLogoVisible(false);
+    }
+  }, [videoLoaded]);
+
   return (
     <section className="relative w-full flex flex-col items-center justify-center text-white overflow-hidden bg-black">
       {/* Stack principal con aspect ratio */}
@@ -47,18 +57,17 @@ const HeroSection = ({
             alt="Logo Background"
             className="object-contain opacity-10"
             style={{
-              width: isMobile ? '70%' : '60%',
-              height: isMobile ? '70%' : '60%',
-              maxWidth: '90%',
+              height: '90%',
+              width: 'auto',
               maxHeight: '90%',
+              maxWidth: '100%',
               minWidth: '60px',
               minHeight: '60px',
               marginTop: isMobile ? '24px' : 0,
             }}
             initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 0.1, scale: 1 }}
+            animate={logoVisible ? { opacity: 0.1, scale: 1 } : { opacity: 0, scale: 0.95 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
-            viewport={{ once: true }}
           />
         </div>
         {/* Sombra/gradiente negro abajo del Stack */}

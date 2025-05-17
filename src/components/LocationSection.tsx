@@ -65,7 +65,7 @@ const LocationSection = () => {
               className="block aspect-video rounded-xl overflow-hidden shadow-lg border border-golden/20 hover:border-golden transition-all duration-300"
             >
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.2096585160704!2d-58.64614782346521!3d-34.4439827518739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bca0e8c3e8ad25%3A0x84caa0bca4b68480!2sCentro%20Comercial%20Lirios%20del%20Talar!5e0!3m2!1ses-419!2sar!4v1713212155082!5m2!1ses-419!2sar" 
+                src="https://www.google.com/maps?q=Centro+Comercial+Lirios+del+Talar,+General+José+Artigas+3188,+B1617+Gral.+Pacheco,+Provincia+de+Buenos+Aires,+Argentina&hl=es&z=17&output=embed" 
                 width="100%" 
                 height="350" 
                 style={{border: 0}} 
