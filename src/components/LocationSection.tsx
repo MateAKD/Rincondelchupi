@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const LocationSection = () => {
   const address = "General José Artigas 3188, V50 s/n, B1617 Gral. Pacheco, Provincia de Buenos Aires";
@@ -11,11 +11,23 @@ const LocationSection = () => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-golden/5 via-black/70 to-black/90 opacity-50"></div>
       
       <div className="container-custom relative z-10">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-golden">
+        <motion.h2
+          className="text-3xl md:text-5xl font-bold text-center mb-16 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-golden"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           DÓNDE ENCONTRARNOS
-        </h2>
+        </motion.h2>
         
-        <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
+        <motion.div
+          className="flex flex-col md:flex-row gap-8 items-center md:items-start"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           <div className="w-full md:w-1/2 space-y-8">
             <div className="flex flex-col items-center md:items-start">
               <div className="flex items-center gap-3 text-xl text-gray-300 mb-4">
@@ -53,9 +65,9 @@ const LocationSection = () => {
               className="block aspect-video rounded-xl overflow-hidden shadow-lg border border-golden/20 hover:border-golden transition-all duration-300"
             >
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.2096585160704!2d-58.64614782346521!3d-34.4439827518739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bca0e8c3e8ad25%3A0x84caa0bca4b68480!2sLirios%20Shopping%20Center!5e0!3m2!1sen!2sar!4v1713212155082!5m2!1sen!2sar" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.2096585160704!2d-58.64614782346521!3d-34.4439827518739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bca0e8c3e8ad25%3A0x84caa0bca4b68480!2sCentro%20Comercial%20Lirios%20del%20Talar!5e0!3m2!1ses-419!2sar!4v1713212155082!5m2!1ses-419!2sar" 
                 width="100%" 
-                height="100%" 
+                height="350" 
                 style={{border: 0}} 
                 allowFullScreen 
                 loading="lazy"
@@ -63,7 +75,7 @@ const LocationSection = () => {
               ></iframe>
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

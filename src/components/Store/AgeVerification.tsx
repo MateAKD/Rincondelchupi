@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -19,7 +18,7 @@ const AgeVerification = ({ onVerify }: AgeVerificationProps) => {
       <div className="max-w-md w-full bg-white/10 backdrop-blur-lg rounded-xl border border-golden/20 shadow-xl p-6 md:p-8 text-white">
         <div className="text-center mb-8">
           <img 
-            src="/lovable-uploads/f13a16c6-b452-42de-a9c1-2449aae035c0.png" 
+            src="/lovable-uploads/logo.png" 
             alt="Logo" 
             className="w-24 h-24 mx-auto mb-4 drop-shadow-lg"
           />

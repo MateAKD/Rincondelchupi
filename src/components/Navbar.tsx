@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -16,7 +15,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
       <div className="container-custom">
         <div className="flex items-center justify-between py-3">
           <Link to="/" className="flex items-center gap-3">
-            <img src="/lovable-uploads/f13a16c6-b452-42de-a9c1-2449aae035c0.png" alt="Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
+            <img src="/lovable-uploads/logo.png" alt="Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
             <span className="text-golden font-bold text-xl md:text-2xl">Rincón del Chupi</span>
           </Link>
           
@@ -31,12 +30,11 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
             <button onClick={() => scrollToSection('productos')} className="text-golden hover:text-white transition-colors text-base lg:text-lg font-medium">
               Productos
             </button>
-            <Link to="/tienda" className="text-golden hover:text-white transition-colors text-base lg:text-lg font-medium">
-              Tienda
+            <Link to="/tienda">
+              <button className="bg-golden text-black px-5 py-2 rounded-lg hover:bg-golden/90 transition-colors font-semibold text-base ml-2">
+                Tienda
+              </button>
             </Link>
-            <button onClick={handleWhatsAppClick} className="bg-golden text-black px-5 py-2 rounded-lg hover:bg-golden/90 transition-colors font-semibold text-base">
-              Pedir Ya
-            </button>
           </div>
         </div>
 
@@ -62,15 +60,6 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
             >
               Tienda
             </Link>
-            <button 
-              onClick={() => {
-                handleWhatsAppClick();
-                setIsMenuOpen(false);
-              }} 
-              className="bg-golden text-black px-4 py-3 mx-4 rounded-lg hover:bg-golden/90 transition-colors font-semibold text-center mt-2"
-            >
-              Pedir Ya
-            </button>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
-
 import React, { useRef, useEffect, useState } from 'react';
 import Vimeo from '@vimeo/player';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { motion } from 'framer-motion';
 
 interface HeroSectionProps {
   handleWhatsAppClick: () => void;
@@ -33,50 +33,33 @@ const HeroSection = ({
   }, []);
 
   return (
-    <section 
-      id="home" 
-      className="relative min-h-screen mt-[56px] flex items-center justify-center text-white overflow-hidden"
-    >
-      <div 
-        ref={videoRef} 
-        className="absolute inset-0 w-full h-full" 
-        style={{
-          filter: 'brightness(0.5)',
-          objectFit: 'cover',
-          objectPosition: 'center',
-          overflow: 'hidden'
-        }}
-      >
-        {/* Video is loaded here by Vimeo player */}
-      </div>
-      
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-7xl font-bold mb-4 text-golden animate-fade-up drop-shadow-xl">
-            Rincón del Chupi
-          </h1>
-          <p className="text-lg md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto animate-fade-up drop-shadow-lg" style={{
-            animationDelay: '0.2s'
-          }}>
-            Las mejores bebidas premium, al mejor precio
-          </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center animate-fade-up" style={{
-            animationDelay: '0.4s'
-          }}>
-            <button 
-              onClick={handleWhatsAppClick} 
-              className="bg-golden text-black px-8 py-3 rounded-lg text-lg font-semibold hover:bg-golden/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
-            >
-              ¡Pedí ya!
-            </button>
-            <button 
-              onClick={() => document.getElementById('combos')?.scrollIntoView({behavior: 'smooth'})} 
-              className="bg-black/50 backdrop-blur-sm border border-golden/30 text-golden px-8 py-3 rounded-lg text-lg font-semibold hover:bg-black/70 hover:border-golden transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Ver combos
-            </button>
-          </div>
+    <section className="relative w-full flex flex-col items-center justify-center text-white overflow-hidden bg-black">
+      {/* Stack principal con aspect ratio */}
+      <div className={`relative w-full aspect-[16/9] max-w-full overflow-hidden ${isMobile ? 'pt-16' : ''}`}>
+        {/* Video de fondo */}
+        <div ref={videoRef} className="absolute inset-0 w-full h-full z-0" style={{ objectFit: 'cover', objectPosition: 'center' }} />
+        {/* Overlay oscuro profesional */}
+        <div className="absolute inset-0 w-full h-full bg-black/70 z-10" />
+        {/* Logo centrado y responsivo dentro del Stack */}
+        <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none select-none">
+          <motion.img
+            src="/lovable-uploads/logo.png"
+            alt="Logo Background"
+            className="object-contain opacity-10 h-full w-auto"
+            style={{
+              maxHeight: isMobile ? '80%' : '100%',
+              maxWidth: isMobile ? '80%' : '100%',
+              minHeight: '60px',
+              minWidth: '60px',
+            }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 0.1, scale: 1 }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
+            viewport={{ once: true }}
+          />
         </div>
+        {/* Sombra/gradiente negro abajo del Stack */}
+        <div className="absolute bottom-0 left-0 w-full h-24 z-30 pointer-events-none select-none" style={{background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%)'}} />
       </div>
     </section>
   );

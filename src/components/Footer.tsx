@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { Instagram, Phone } from 'lucide-react';
 
 const Footer = () => {
-  const whatsappNumber = "1234567890"; // Replace with your actual WhatsApp number
-  const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+  const whatsappNumber = "1141445384"; // Replace with your actual WhatsApp number
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hola! Quiero hacer un pedido')}`;
   const instagramUrl = "https://www.instagram.com/rincondelchupi_/";
   
   return (
@@ -14,7 +13,7 @@ const Footer = () => {
       <div className="container-custom relative z-10">
         <div className="flex flex-col items-center justify-center gap-8">
           <div className="flex items-center gap-2">
-            <img src="/lovable-uploads/f13a16c6-b452-42de-a9c1-2449aae035c0.png" alt="Logo" className="w-12 h-12 object-contain" />
+            <img src="/lovable-uploads/logo.png" alt="Logo" className="w-12 h-12 object-contain" />
             <span className="text-golden font-bold text-2xl">Rincón del Chupi</span>
           </div>
           
@@ -23,11 +22,11 @@ const Footer = () => {
           </p>
           
           <div className="flex gap-6 mt-4">
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#20BA5C] text-white p-4 rounded-full transition-all duration-300 transform hover:scale-110">
-              <Phone size={28} />
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="p-0 rounded-full transition-all duration-300 transform hover:scale-110 flex items-center justify-center">
+              <img src="/lovable-uploads/wpp sin fondo.png" alt="WhatsApp" className="w-10 h-10 object-contain" />
             </a>
-            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="bg-[#E1306C] hover:bg-[#C13584] text-white p-4 rounded-full transition-all duration-300 transform hover:scale-110">
-              <Instagram size={28} />
+            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="p-0 rounded-full transition-all duration-300 transform hover:scale-110 flex items-center justify-center">
+              <img src="/lovable-uploads/IG sin fondo.png" alt="Instagram" className="w-10 h-10 object-contain" />
             </a>
           </div>
           
@@ -37,6 +36,10 @@ const Footer = () => {
             </p>
           </div>
         </div>
+      </div>
+      {/* Créditos pequeños */}
+      <div className="absolute bottom-2 right-4 text-xs text-gray-500 opacity-70 select-none pointer-events-none">
+        Página hecha por <span className="font-semibold">AKDMIA Studio</span>
       </div>
     </footer>
   );

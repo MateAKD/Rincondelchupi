@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -65,15 +64,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <Card className="overflow-hidden border border-golden/30 bg-black/40 backdrop-blur-sm text-white hover:shadow-md hover:shadow-golden/10 transition-all duration-300 group">
-      {product.image && (
-        <div className="aspect-square overflow-hidden">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        </div>
-      )}
+      <img
+        src={product.image ? product.image : '/lovable-uploads/not-found.png'}
+        alt={product.image ? product.name : 'Imagen no disponible'}
+        className="w-full h-48 object-contain mb-4 rounded-lg bg-black/10"
+      />
       
       <CardContent className="p-4">
         <h3 className="font-semibold text-lg text-golden">{product.name}</h3>

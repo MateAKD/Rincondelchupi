@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "./CartProvider";
@@ -24,29 +23,19 @@ const Cart = () => {
       return;
     }
 
-    // Format WhatsApp message
-    let message = "¡Hola Rincón del Chupi! Mi pedido es:\n";
-    
+    // Mensaje personalizado para WhatsApp
+    let message = `Hola quiero hacer un pedido para ${deliveryMethod === 'delivery' ? 'delivery' : 'retirar en el local'}\n\n`;
+    message += 'Mi pedido es:\n';
     items.forEach(item => {
       const itemTotal = item.price * item.quantity;
       message += `- ${item.quantity}x ${item.name} ($${formatPrice(itemTotal)})\n`;
     });
-    
-    message += `\n*Total a pagar: $${formatPrice(total)}*\n`;
-    message += `\nForma de entrega: ${deliveryMethod === 'delivery' ? '🚚 Delivery (envío a domicilio)' : '🏬 Retiro en el local'}`;
-    
-    if (deliveryMethod === 'delivery') {
-      message += '\n\nPor favor indícame tu dirección completa para coordinar la entrega.';
-    } else {
-      message += '\n\nPor favor indícame a qué hora pasarás a retirar tu pedido.';
-    }
-    
+    message += `\n*Total a pagar: $${formatPrice(total)}*`;
+
     // Encode message for URL
     const encodedMessage = encodeURIComponent(message);
-    
-    // WhatsApp phone number - replace with actual number
-    const phoneNumber = "1234567890";
-    
+    // WhatsApp phone number
+    const phoneNumber = "+5491141445384";
     // Open WhatsApp link
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
   };
