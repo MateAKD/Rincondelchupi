@@ -48,6 +48,19 @@ const Toast = React.forwardRef<
       ref={ref}
       className={cn(toastVariants({ variant }), className)}
       {...props}
+      onPointerDown={(e) => {
+        if (e.target === e.currentTarget) {
+          e.currentTarget.click();
+        }
+      }}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const toast = e.currentTarget;
+        toast.setAttribute('data-state', 'closed');
+        toast.style.display = 'none';
+      }}
+      duration={2000}
     />
   )
 })

@@ -35,9 +35,14 @@ const Cart = () => {
     // Encode message for URL
     const encodedMessage = encodeURIComponent(message);
     // WhatsApp phone number
-    const phoneNumber = "+5491141445384";
+    const phoneNumber = "+5491121840875";
     // Open WhatsApp link
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+  };
+
+  const handleWhatsAppClick = () => {
+    const message = `Hola! Quiero hacer un pedido:\n\n${items.map(item => `- ${item.name} x${item.quantity}`).join('\n')}\n\nTotal: $${total}`;
+    window.open(`https://wa.me/5491121840875?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   return (

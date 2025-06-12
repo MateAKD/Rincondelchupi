@@ -6,7 +6,7 @@ interface NavbarProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
   scrollToSection: (sectionId: string) => void;
-  handleWhatsAppClick: () => void;
+  handleWhatsAppClick: (message?: string) => void;
 }
 
 const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClick }: NavbarProps) => {
@@ -22,9 +22,11 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
             <span className="text-golden font-bold text-xl md:text-2xl">Rincón del Chupi</span>
           </Link>
           
-          <button className="md:hidden text-golden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          {!isTiendaPage && (
+            <button className="md:hidden text-golden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          )}
 
           {!isTiendaPage && (
             <div className="hidden md:flex items-center gap-6 lg:gap-10">
@@ -36,6 +38,15 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
               </button>
               <button onClick={() => scrollToSection('nosotros')} className="text-golden hover:text-white transition-colors text-base lg:text-lg font-medium">
                 Nosotros
+              </button>
+              <button 
+                onClick={() => {
+                  const message = 'Hola! Me interesan los precios mayoristas. ¿Podés darme más información?';
+                  window.open(`https://api.whatsapp.com/send?phone=5491121840875&text=${encodeURIComponent(message)}`, "_blank");
+                }} 
+                className="text-golden hover:text-white transition-colors text-base lg:text-lg font-medium"
+              >
+                Mayorista
               </button>
               <Link to="/tienda">
                 <button className="bg-golden text-black px-5 py-2 rounded-lg hover:bg-golden/90 transition-colors font-semibold text-base ml-2">
@@ -67,6 +78,16 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
                 className="text-golden hover:text-white transition-colors text-lg font-medium text-center px-4"
               >
                 Nosotros
+              </button>
+              <button
+                onClick={() => {
+                  const message = 'Hola! Me interesan los precios mayoristas. ¿Podés darme más información?';
+                  window.open(`https://api.whatsapp.com/send?phone=5491121840875&text=${encodeURIComponent(message)}`, "_blank");
+                  setIsMenuOpen(false);
+                }}
+                className="text-golden hover:text-white transition-colors text-lg font-medium text-center px-4"
+              >
+                Mayorista
               </button>
               <Link 
                 to="/tienda" 

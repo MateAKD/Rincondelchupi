@@ -1,8 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 
 const features = [
@@ -25,6 +24,11 @@ const features = [
     title: "Bebidas Frías",
     description: <><span className="text-blue-400">❄</span> Compra tu combo con hielo <span className="text-blue-400">🧊</span></>,
     gradient: "from-blue-900/60 via-black/90 to-black/90"
+  },
+  {
+    title: "Precios Mayoristas",
+    description: <><span className="text-green-400">💰</span> Descuentos especiales para grandes volúmenes <span className="text-green-400">💸</span></>,
+    gradient: "from-green-700/60 via-black/90 to-black/90"
   }
 ];
 
@@ -32,7 +36,8 @@ const glowColors = [
   'rgba(255, 221, 77, 0.35)',
   'rgba(255, 99, 132, 0.25)',
   'rgba(255, 193, 7, 0.25)',
-  'rgba(0, 123, 255, 0.25)'
+  'rgba(0, 123, 255, 0.25)',
+  'rgba(0, 255, 0, 0.25)'
 ];
 
 const FeaturesSection = () => (
@@ -42,13 +47,12 @@ const FeaturesSection = () => (
         POR QUÉ ELEGIRNOS
       </h2>
       <Swiper
-        modules={[Autoplay, Pagination]}
+        modules={[Autoplay]}
         slidesPerView={2.1}
         spaceBetween={32}
         centeredSlides
         loop
         autoplay={{ delay: 1200, disableOnInteraction: false }}
-        pagination={{ clickable: true }}
         className="w-full max-w-none px-0 swiper-overflow-visible"
         breakpoints={{
           640: { slidesPerView: 1.1, spaceBetween: 8 },

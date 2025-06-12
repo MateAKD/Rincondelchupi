@@ -67,7 +67,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <img
         src={product.image ? product.image : '/lovable-uploads/not-found.png'}
         alt={product.image ? product.name : 'Imagen no disponible'}
-        className="w-full h-48 object-contain mb-4 rounded-lg bg-black/10"
+        className="w-full h-48 object-contain mb-4 mt-4 rounded-lg bg-black/10"
       />
       
       <CardContent className="p-4">

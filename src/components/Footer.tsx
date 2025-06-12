@@ -2,7 +2,7 @@ import React from 'react';
 import { Instagram, Phone } from 'lucide-react';
 
 const Footer = () => {
-  const whatsappNumber = "1141445384"; // Replace with your actual WhatsApp number
+  const whatsappNumber = "+541121840875"; // Número de WhatsApp actualizado
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hola! Quiero hacer un pedido')}`;
   const instagramUrl = "https://www.instagram.com/rincondelchupi_/";
   
@@ -32,14 +32,14 @@ const Footer = () => {
           
           <div className="w-full border-t border-golden/20 mt-6 pt-6 text-center">
             <p className="text-sm text-gray-400">
-              © 2024 Rincón del Chupi – Consumir con moderación. Venta solo a mayores de 18 años.
+              © 2025 Rincón del Chupi – Consumir con moderación. Venta solo a mayores de 18 años.
             </p>
           </div>
         </div>
       </div>
       {/* Créditos pequeños */}
-      <div className="absolute bottom-2 right-4 text-xs text-gray-500 opacity-70 select-none pointer-events-none">
-        Página hecha por <span className="font-semibold">AKDMIA Studio</span>
+      <div className="absolute bottom-2 right-4 text-xs text-gray-500 opacity-70 select-none">
+        Página hecha por <a href="https://akdmiastudio.framer.website" target="_blank" rel="noopener noreferrer" className="font-semibold">AKDMIA Studio</a>
       </div>
     </footer>
   );

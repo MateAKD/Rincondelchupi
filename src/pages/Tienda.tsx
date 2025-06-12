@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -24,7 +23,7 @@ const Tienda = () => {
   }, []);
 
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/1234567890", "_blank");
+    window.open("https://wa.me/+5491121840875", "_blank");
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -70,7 +69,13 @@ const Tienda = () => {
                   )}
                 </Button>
               </SheetTrigger>
-              <SheetContent className="bg-black/95 border-l border-golden/20 backdrop-blur-md w-full sm:max-w-md">
+              <SheetContent 
+                className="bg-black/95 border-l border-golden/20 backdrop-blur-md w-full sm:max-w-md"
+                onPointerDownOutside={(e) => e.preventDefault()}
+                onInteractOutside={(e) => e.preventDefault()}
+                side="right"
+                onOpenAutoFocus={(e) => e.preventDefault()}
+              >
                 <Cart />
               </SheetContent>
             </Sheet>
