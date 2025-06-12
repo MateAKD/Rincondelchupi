@@ -26,28 +26,28 @@ const products = [
     id: "combo1",
     name: "Combo Absolut + 5 Speed",
     price: 25000,
-    image: "/lovable-uploads/Combos/ABSOLUT + 5 SPEED.png",
+    image: "/lovable-uploads/Combos/ABSOLUT_+_5_SPEED.png",
     category: "Combos"
   },
   {
     id: "combo2",
     name: "Combo Aconcagua + 2 Tonicas",
     price: 20000,
-    image: "/lovable-uploads/Combos/ACONCAGUA + 2 TONICAS.png",
+    image: "/lovable-uploads/Combos/ACONCAGUA_+_2_TONICAS.png",
     category: "Combos"
   },
   {
     id: "combo3",
     name: "Combo Aperol + Cinzano To Spritz",
     price: 0,
-    image: "/lovable-uploads/Combos/APEROL + CINZANO_TO_SPRITZ.png",
+    image: "/lovable-uploads/Combos/APEROL_+_CINZANO_TO_SPRITZ.png",
     category: "Combos"
   },
   {
     id: "combo4",
     name: "Combo Beefeater + 2 Schweppes",
     price: 23000,
-    image: "/lovable-uploads/Combos/BEEFEATER + 2 SCHWEPPS.png",
+    image: "/lovable-uploads/Combos/BEEFEATER_+_2_SCHWEPPS.png",
     category: "Combos"
   },
   {
@@ -61,42 +61,42 @@ const products = [
     id: "combo6",
     name: "Combo Fernet + 2 Cocas",
     price: 18000,
-    image: "/lovable-uploads/Combos/FERNET + 2 COCAS.png",
+    image: "/lovable-uploads/Combos/FERNET_+_2_COCAS.png",
     category: "Combos"
   },
   {
     id: "combo7",
     name: "Combo Gordons + 2 Schweppes",
     price: 22000,
-    image: "/lovable-uploads/Combos/GORDONS + 2 SCHWEPS.png",
+    image: "/lovable-uploads/Combos/GORDONS_+_2_SCHWEPS.png",
     category: "Combos"
   },
   {
     id: "combo8",
     name: "Combo Malibu + 2 Cepita",
     price: 24000,
-    image: "/lovable-uploads/Combos/MALIBU + 2 CEPITA.png",
+    image: "/lovable-uploads/Combos/MALIBU_+_2_CEPITA.png",
     category: "Combos"
   },
   {
     id: "combo9",
     name: "Combo Skyy + 5 Speed",
     price: 24000,
-    image: "/lovable-uploads/Combos/SKYY + 5 SPEED.png",
+    image: "/lovable-uploads/Combos/SKYY_+_5_SPEED.png",
     category: "Combos"
   },
   {
     id: "combo10",
     name: "Combo Smirnoff + 2 Cepitas",
     price: 22000,
-    image: "/lovable-uploads/Combos/SMIRNOFF + 2 CEPITAS.png",
+    image: "/lovable-uploads/Combos/SMIRNOFF_+_2_CEPITAS.png",
     category: "Combos"
   },
   {
     id: "combo11",
     name: "Combo Smirnoff + 5 Speed",
     price: 24000,
-    image: "/lovable-uploads/Combos/SMIRNOF + 5 SPEED.png",  
+    image: "/lovable-uploads/Combos/SMIRNOF_+_5_SPEED.png",  
     category: "Combos"
   },
   // Cervezas
