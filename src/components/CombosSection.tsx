@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from './Store/CartProvider';
 
 interface Combo {
   id: string;
@@ -13,11 +14,11 @@ interface Combo {
 interface CombosSectionProps {
   combos: Combo[];
   handleWhatsAppClick: () => void;
-  addToCart: (item: any) => void;
 }
 
-const CombosSection = ({ combos, handleWhatsAppClick, addToCart }: CombosSectionProps) => {
+const CombosSection = ({ combos, handleWhatsAppClick }: CombosSectionProps) => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
   const handleComboClick = (combo: Combo) => {
     addToCart({
@@ -27,11 +28,11 @@ const CombosSection = ({ combos, handleWhatsAppClick, addToCart }: CombosSection
       quantity: 1,
       image: combo.image
     });
-    navigate('/tienda');
+    navigate('/tienda?category=Combos');
   };
 
   return (
-    <section id="combos" className="relative py-24 bg-black">
+    <section id="combos" className="relative py-10 bg-black">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-golden/5 via-secondary to-secondary animate-pulse duration-1000 opacity-30"></div>
       
       <div className="container-custom relative z-10">

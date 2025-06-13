@@ -36,6 +36,9 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
               <button onClick={() => scrollToSection('productos')} className="text-golden hover:text-white transition-colors text-base lg:text-lg font-medium">
                 Otros
               </button>
+              <button onClick={() => scrollToSection('location')} className="text-golden hover:text-white transition-colors text-base lg:text-lg font-medium">
+                Encontranos
+              </button>
               <button onClick={() => scrollToSection('nosotros')} className="text-golden hover:text-white transition-colors text-base lg:text-lg font-medium">
                 Nosotros
               </button>
@@ -72,6 +75,12 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
                 className="text-golden hover:text-white transition-colors text-lg font-medium text-center px-4"
               >
                 Otros
+              </button>
+              <button 
+                onClick={() => scrollToSection('location')} 
+                className="text-golden hover:text-white transition-colors text-lg font-medium text-center px-4"
+              >
+                Encontranos
               </button>
               <button 
                 onClick={() => scrollToSection('nosotros')} 

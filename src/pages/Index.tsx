@@ -8,7 +8,6 @@ import LocationSection from "../components/LocationSection";
 import Footer from "../components/Footer";
 import { motion } from 'framer-motion';
 import AboutSection from '../components/AboutSection';
-import CartProvider, { useCart } from '../components/Store/CartProvider';
 
 const combos = [
   {
@@ -92,7 +91,6 @@ const combos = [
 
 const IndexContent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { addToCart } = useCart();
 
   const handleWhatsAppClick = () => {
     window.open("https://wa.me/+5491121840875", "_blank");
@@ -116,7 +114,7 @@ const IndexContent = () => {
         <FeaturesSection />
       </motion.div>
       <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.4 }} viewport={{ once: true }}>
-        <CombosSection combos={combos} handleWhatsAppClick={handleWhatsAppClick} addToCart={addToCart} />
+        <CombosSection combos={combos} handleWhatsAppClick={handleWhatsAppClick} />
       </motion.div>
       <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.6 }} viewport={{ once: true }}>
         <ProductsSection />
@@ -132,10 +130,6 @@ const IndexContent = () => {
   );
 };
 
-const Index = () => (
-  <CartProvider setCartCount={() => {}}>
-    <IndexContent />
-  </CartProvider>
-);
+const Index = () => <IndexContent />;
 
 export default Index;

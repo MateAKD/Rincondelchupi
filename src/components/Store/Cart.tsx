@@ -46,7 +46,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="h-full flex flex-col text-white relative">
+    <div className="h-full flex flex-col text-white relative border-2 border-black rounded-lg">
       <div className="mb-4">
         <h3 className="text-2xl font-bold text-golden">Mi Carrito</h3>
         <p className="text-sm text-gray-300 flex items-center gap-2 mt-1">

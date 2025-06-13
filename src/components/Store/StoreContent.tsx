@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProductCard from "./ProductCard";
 import { useCart, DeliveryMethod } from "./CartProvider";
 import { Button } from "@/components/ui/button";
-import { Truck, Store, ArrowRight } from "lucide-react";
+import { Truck, Store, ArrowRight, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { useLocation } from 'react-router-dom';
 
 // Product categories
 const categories = [
@@ -1069,12 +1071,33 @@ const products = [
 ];
 
 const StoreContent = () => {
-  const [activeCategory, setActiveCategory] = useState<string>("Todos");
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialCategory = queryParams.get('category') || "Todos";
+
+  const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const { deliveryMethod, setDeliveryMethod } = useCart();
 
-  const filteredProducts = activeCategory === "Todos" 
-    ? [...products].sort((a, b) => a.name.localeCompare(b.name)) 
-    : products.filter(product => product.category === activeCategory);
+  useEffect(() => {
+    const categoryFromUrl = queryParams.get('category');
+    if (categoryFromUrl && categories.includes(categoryFromUrl)) {
+      setActiveCategory(categoryFromUrl);
+    }
+  }, [location.search]);
+
+  const filteredProducts = products
+    .filter(product => {
+      const matchesCategory = activeCategory === "Todos" || product.category === activeCategory;
+      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+      if (searchQuery) {
+        return matchesSearch;
+      } else {
+        return matchesCategory;
+      }
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <>
@@ -1090,7 +1113,7 @@ const StoreContent = () => {
               className={`flex items-center gap-2 ${
                 deliveryMethod === 'delivery' 
                   ? 'bg-golden text-black hover:bg-golden/90' 
-                  : 'border-golden/50 text-golden hover:bg-golden/10'
+                  : 'border-golden/50 text-golden/50 hover:bg-golden/10 opacity-50'
               }`}
               size="sm"
             >
@@ -1102,7 +1125,7 @@ const StoreContent = () => {
               className={`flex items-center gap-2 ${
                 deliveryMethod === 'pickup' 
                   ? 'bg-golden text-black hover:bg-golden/90' 
-                  : 'border-golden/50 text-golden hover:bg-golden/10'
+                  : 'border-golden/50 text-golden/50 hover:bg-golden/10 opacity-50'
               }`}
               size="sm"
             >
@@ -1111,15 +1134,29 @@ const StoreContent = () => {
           </div>
         </div>
       </div>
-      
-      <Tabs defaultValue="Todos" className="w-full">
+
+      <div className="mb-8">
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <Search className="h-5 w-5 text-golden/50" />
+          </div>
+          <Input
+            type="text"
+            placeholder="Buscar productos..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10 bg-black/40 border-golden/20 text-white placeholder:text-gray-400 focus:border-golden/50 focus:ring-golden/20"
+          />
+        </div>
+      </div>
+
+      <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
         <div className="overflow-x-auto pb-2 mb-4">
           <TabsList className="bg-black/40 border border-golden/20 p-1">
             {categories.map(category => (
               <TabsTrigger 
                 key={category}
                 value={category}
-                onClick={() => setActiveCategory(category)}
                 className="whitespace-nowrap data-[state=active]:bg-golden data-[state=active]:text-black"
               >
                 {category}
@@ -1129,7 +1166,7 @@ const StoreContent = () => {
         </div>
         
         <TabsContent value={activeCategory} className="mt-6 animate-fade-in">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
