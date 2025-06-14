@@ -60,7 +60,7 @@ const AboutSection = () => {
                   </span>
                   {faq.question}
                 </button>
-                <AnimatePresence initial={false}>
+                <AnimatePresence>
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}

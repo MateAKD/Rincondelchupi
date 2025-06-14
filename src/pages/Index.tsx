@@ -119,10 +119,10 @@ const IndexContent = () => {
       <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.6 }} viewport={{ once: true }}>
         <ProductsSection />
       </motion.div>
-      <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.8 }} viewport={{ once: true }}>
+      <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.8 }} viewport={{ once: true, margin: "-100px" }}>
         <LocationSection />
       </motion.div>
-      <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 2.0 }} viewport={{ once: true }}>
+      <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 2.0 }} viewport={{ once: true, margin: "-100px" }}>
         <AboutSection />
       </motion.div>
       <Footer />
