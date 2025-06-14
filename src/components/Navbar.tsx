@@ -13,19 +13,6 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
   const location = useLocation();
   const isTiendaPage = location.pathname === '/tienda';
 
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const offset = 80; // Ajustamos el offset para compensar el navbar fijo
-      const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({
-        top: sectionTop,
-        behavior: 'smooth'
-      });
-    }
-    setIsMenuOpen(false);
-  };
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-golden/20">
       <div className="container-custom">
@@ -105,21 +92,11 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
                 onClick={() => {
                   const message = 'Hola! Me interesan los precios mayoristas. ¿Podés darme más información?';
                   window.open(`https://api.whatsapp.com/send?phone=5491121840875&text=${encodeURIComponent(message)}`, "_blank");
-                  setIsMenuOpen(false);
                 }}
                 className="text-golden hover:text-white transition-colors text-lg font-medium text-center px-4"
               >
                 Mayorista
               </button>
-              <Link 
-                to="/tienda" 
-                className="flex justify-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <button className="bg-golden text-black px-5 py-2 rounded-lg hover:bg-golden/90 transition-colors font-semibold text-lg w-full">
-                  Tienda
-                </button>
-              </Link>
             </div>
           </div>
         )}
