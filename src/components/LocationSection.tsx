@@ -7,15 +7,15 @@ const LocationSection = () => {
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
   return (
-    <section id="location" className="relative py-10 bg-black/90">
+    <section id="location" className="relative py-10 bg-black/90 min-h-screen">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-golden/5 via-black/70 to-black/90 opacity-50"></div>
       
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10 pt-20">
         <motion.h2
           className="text-3xl md:text-5xl font-bold text-center mb-16 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-golden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-200px" }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.4 }}
         >
           ENCONTRANOS

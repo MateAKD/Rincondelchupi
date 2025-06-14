@@ -13,6 +13,19 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
   const location = useLocation();
   const isTiendaPage = location.pathname === '/tienda';
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const offset = 80; // Ajustamos el offset para compensar el navbar fijo
+      const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({
+        top: sectionTop,
+        behavior: 'smooth'
+      });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-golden/20">
       <div className="container-custom">
