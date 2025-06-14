@@ -36,7 +36,7 @@ const AboutSection = () => {
           className="max-w-3xl mx-auto bg-golden rounded-2xl p-6 md:p-12 flex flex-col gap-2 shadow-lg"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-250px" }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.3 }}
         >
           {faqs.map((faq, idx) => {
@@ -47,7 +47,7 @@ const AboutSection = () => {
                 className="border-b border-black/30 last:border-b-0"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-200px" }}
+                viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.3, delay: idx * 0.1 }}
               >
                 <button
