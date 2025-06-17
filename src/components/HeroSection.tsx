@@ -30,7 +30,7 @@ const HeroSection = ({
             loop: true,
             muted: true,
             controls: false,
-            quality: isMobile ? '540p' : '720p',
+            quality: isMobile ? '360p' : '540p',
             playsinline: true,
             dnt: true
           });

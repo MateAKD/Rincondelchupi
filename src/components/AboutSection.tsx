@@ -20,10 +20,10 @@ const AboutSection = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section id="nosotros" className="py-12 bg-black/90 min-h-screen">
-      <div className="container-custom pt-20">
+    <section id="nosotros" className="py-0 bg-black/90">
+      <div className="container-custom py-0 pt-15 pb-4">
         <motion.h2 
-          className="text-3xl md:text-5xl font-bold text-center mb-16 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-golden"
+          className="text-3xl md:text-5xl font-bold text-center mb-6 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-golden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}

@@ -3,7 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { ShoppingCart } from 'lucide-react';
 
 const features = [
   {
@@ -84,6 +86,14 @@ const FeaturesSection = () => {
   return (
     <section className="pt-8 pb-24 bg-black overflow-hidden">
       <div className="w-full max-w-none relative z-10 p-0 m-0">
+        <div className="container flex justify-center py-1 bg-black/80 mb-6">
+          <Link to="/tienda">
+            <Button className="bg-golden hover:bg-golden/90 text-black font-semibold px-5 py-2 rounded-lg text-base">
+              <ShoppingCart className="mr-2 h-4 w-4" />
+              Ir a la Tienda
+            </Button>
+          </Link>
+        </div>
         <h2
           className="text-3xl md:text-5xl font-bold text-center mb-16 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-golden"
         >

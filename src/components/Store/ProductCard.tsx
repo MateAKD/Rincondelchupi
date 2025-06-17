@@ -24,12 +24,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const { toast } = useToast();
 
   const incrementQuantity = () => {
-    if (quantity < 10) {
+    if (quantity < 50) {
       setQuantity(quantity + 1);
     } else {
       toast({
         title: "Cantidad máxima",
-        description: "No puedes agregar más de 10 unidades",
+        description: "No puedes agregar más de 50 unidades",
       });
     }
   };
@@ -67,7 +67,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <img
         src={product.image ? product.image : '/lovable-uploads/not-found.png'}
         alt={product.image ? product.name : 'Imagen no disponible'}
-        className="w-full h-32 sm:h-48 object-contain mb-2 sm:mb-4 mt-2 sm:mt-4 rounded-lg bg-black/10"
+        className="w-11/12 mx-auto h-32 sm:h-48 object-contain mb-2 sm:mb-4 mt-2 sm:mt-4 rounded-lg bg-neutral-100/5"
       />
       
       <CardContent className="p-2 sm:p-4">
@@ -95,7 +95,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               size="sm" 
               className="px-1 sm:px-2 h-6 sm:h-8 text-golden hover:text-white hover:bg-transparent" 
               onClick={incrementQuantity}
-              disabled={quantity >= 10}
+              disabled={quantity >= 50}
             >
               <Plus className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>

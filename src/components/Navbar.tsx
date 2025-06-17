@@ -61,7 +61,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && !isTiendaPage && (
+        {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-golden/20">
             <div className="flex flex-col gap-5">
               <button 
@@ -97,6 +97,11 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollToSection, handleWhatsAppClic
               >
                 Mayorista
               </button>
+              <Link to="/tienda" onClick={() => setIsMenuOpen(false)}>
+                <button className="bg-golden text-black px-5 py-2 rounded-lg hover:bg-golden/90 transition-colors font-semibold text-base w-full text-center">
+                  Tienda
+                </button>
+              </Link>
             </div>
           </div>
         )}
