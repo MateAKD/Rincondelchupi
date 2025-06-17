@@ -24,12 +24,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const { toast } = useToast();
 
   const incrementQuantity = () => {
-    if (quantity < 50) {
+    if (quantity < 12) {
       setQuantity(quantity + 1);
     } else {
       toast({
         title: "Cantidad máxima",
-        description: "No puedes agregar más de 50 unidades",
+        description: "No puedes agregar más de 12 unidades",
       });
     }
   };
