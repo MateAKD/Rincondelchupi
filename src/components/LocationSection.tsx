@@ -7,10 +7,10 @@ const LocationSection = () => {
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
   return (
-    <section id="location" className="relative py-10 bg-black/90 min-h-screen">
+    <section id="location" className="relative py-0 bg-black/90">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-golden/5 via-black/70 to-black/90 opacity-50"></div>
       
-      <div className="container-custom relative z-10 pt-20">
+      <div className="container-custom relative z-10 pt-5">
         <motion.h2
           className="text-3xl md:text-5xl font-bold text-center mb-16 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-golden"
           initial={{ opacity: 0, y: 20 }}
@@ -29,24 +29,24 @@ const LocationSection = () => {
           transition={{ duration: 0.3 }}
         >
           {/* Horarios */}
-          <div className="w-full flex flex-col items-center md:items-start">
+          <div className="w-full flex flex-col items-center">
             <div className="flex items-center gap-3 text-xl text-gray-300 mb-4">
               <Clock size={32} className="text-golden" />
               <h3 className="font-bold text-2xl text-golden">Horarios</h3>
             </div>
-            <p className="text-gray-300 text-center md:text-left">Lunes a Viernes: 10:00 - 20:00</p>
-            <p className="text-gray-300 text-center md:text-left">Sábados: 10:00 - 19:00</p>
-            <p className="text-gray-300 text-center md:text-left">Domingos: 11:00 - 18:00</p>
+            <p className="text-gray-300 text-center">Martes a Viernes de 17:00 - 22:30</p>
+            <p className="text-gray-300 text-center">Sábados: 11:00 - 23:00</p>
+            
           </div>
 
           {/* Visitanos */}
-          <div className="w-full flex flex-col items-center md:items-start">
+          <div className="w-full flex flex-col items-center">
             <div className="flex items-center gap-3 text-xl text-gray-300 mb-4">
               <MapPin size={32} className="text-golden" />
               <h3 className="font-bold text-2xl text-golden">Visitanos</h3>
             </div>
             
-            <p className="text-lg text-gray-300 text-center md:text-left">
+            <p className="text-lg text-gray-300 text-center">
               Te esperamos en nuestro local en el shopping Lirios del Talar
             </p>
             

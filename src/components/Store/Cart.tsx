@@ -23,6 +23,16 @@ const Cart = () => {
       return;
     }
 
+    const MIN_DELIVERY_TOTAL = 40000;
+    if (deliveryMethod === 'delivery' && total < MIN_DELIVERY_TOTAL) {
+      toast({
+        title: "Mínimo de compra no alcanzado",
+        description: `Para entrega a domicilio, el monto mínimo de compra es de $${formatPrice(MIN_DELIVERY_TOTAL)}.`,
+        variant: "destructive",
+      });
+      return;
+    }
+
     // Mensaje personalizado para WhatsApp
     let message = `Hola quiero hacer un pedido para ${deliveryMethod === 'delivery' ? 'delivery' : 'retirar en el local'}\n\n`;
     message += 'Mi pedido es:\n';
@@ -53,6 +63,7 @@ const Cart = () => {
           {deliveryMethod === 'delivery' ? (
             <>
               <Truck className="h-4 w-4 text-golden" /> Entrega a domicilio
+              <span className="text-xs text-golden/80">(Mínimo $40.000)</span>
             </>
           ) : (
             <>
@@ -140,6 +151,9 @@ const Cart = () => {
               <span className="text-golden">Total:</span>
               <span className="text-primary">${formatPrice(total)}</span>
             </div>
+            {deliveryMethod === 'delivery' && (
+              <p className="text-xs text-golden/80 text-right mb-4">*Compra mínima para delivery $40.000</p>
+            )}
             
             <div className="flex flex-col gap-2">
               <Button 

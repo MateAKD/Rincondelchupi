@@ -1105,6 +1105,10 @@ const StoreContent = () => {
               <Store className="h-4 w-4" /> Retiro en local
             </Button>
           </div>
+
+          {deliveryMethod === 'delivery' && (
+            <p className="text-xs text-golden/80 mt-2">*Compra mínima para delivery $40.000</p>
+          )}
         </div>
       </div>
 

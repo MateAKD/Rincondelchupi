@@ -48,7 +48,7 @@ const Tienda = () => {
       />
       
       <CartProvider setCartCount={setCartCount}>
-        <div className="container-custom pt-28 pb-16">
+        <div className="container-custom pt-20 pb-16">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-golden flex items-center gap-3">
               <ShoppingCart className="text-golden hidden md:inline" />

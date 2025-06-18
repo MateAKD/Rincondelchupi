@@ -71,11 +71,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
       />
       
       <CardContent className="p-2 sm:p-4">
-        <h3 className="font-semibold text-sm sm:text-lg text-golden line-clamp-2">{product.name}</h3>
+        <h3 className="font-semibold text-sm sm:text-lg text-golden line-clamp-2 h-10">{product.name}</h3>
         {product.description && (
           <p className="text-xs sm:text-sm text-gray-300 mt-1 line-clamp-2">{product.description}</p>
         )}
-        <p className="mt-1 sm:mt-2 font-bold text-primary text-lg sm:text-2xl">${formatPrice(product.price)}</p>
+        <p className="mt-1 sm:mt-2 font-bold text-white text-lg sm:text-2xl">${formatPrice(product.price)}</p>
         
         <div className="flex items-center justify-between mt-2 sm:mt-4">
           <span className="text-xs sm:text-sm font-medium text-gray-300">Cantidad:</span>
