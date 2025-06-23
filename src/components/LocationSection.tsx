@@ -35,7 +35,7 @@ const LocationSection = () => {
               <h3 className="font-bold text-2xl text-golden">Horarios</h3>
             </div>
             <p className="text-gray-300 text-center">Martes a Viernes de 17:00 - 22:30</p>
-            <p className="text-gray-300 text-center">Sábados: 11:00 - 23:00</p>
+            <p className="text-gray-300 text-center">Sábados: 11:00 - 23:00 (Solo venta en el local)</p>
             
           </div>
 

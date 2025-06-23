@@ -13,12 +13,19 @@ const Tienda = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [verified, setVerified] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [isSaturday, setIsSaturday] = useState(false);
 
   // Check if user has already verified age in this session
   useEffect(() => {
     const isAgeVerified = localStorage.getItem("age-verified") === "true";
     if (isAgeVerified) {
       setVerified(true);
+    }
+
+    const today = new Date();
+    // 6 represents Saturday
+    if (today.getDay() === 6) {
+      setIsSaturday(true);
     }
   }, []);
 
@@ -36,6 +43,16 @@ const Tienda = () => {
 
   if (!verified) {
     return <AgeVerification onVerify={() => setVerified(true)} />;
+  }
+
+  if (isSaturday) {
+    return (
+      <div className="min-h-screen bg-black/95 text-white flex flex-col items-center justify-center text-center">
+        <h1 className="text-3xl md:text-5xl font-bold text-golden mb-4">Tienda Cerrada</h1>
+        <p className="text-lg text-gray-300">La tienda online no está disponible los sábados.</p>
+        <p className="text-lg text-gray-300">¡Te esperamos de Martes a Viernes!</p>
+      </div>
+    );
   }
 
   return (
