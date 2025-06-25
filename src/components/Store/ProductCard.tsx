@@ -4,15 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Plus, Minus, ShoppingCart } from "lucide-react";
 import { useCart } from "./CartProvider";
 import { useToast } from "@/hooks/use-toast";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  category: string;
-  description?: string;
-  image?: string;
-}
+import { Product } from "../../hooks/useProducts";
 
 interface ProductCardProps {
   product: Product;

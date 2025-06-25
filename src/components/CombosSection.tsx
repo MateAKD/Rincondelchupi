@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from './Store/CartProvider';
@@ -7,28 +7,52 @@ interface Combo {
   id: string;
   name: string;
   description: string;
-  price: string;
+  price: number;
   image: string;
+  category: string;
+  active?: boolean;
 }
 
 interface CombosSectionProps {
-  combos: Combo[];
   handleWhatsAppClick: () => void;
 }
 
-const CombosSection = ({ combos, handleWhatsAppClick }: CombosSectionProps) => {
+const CombosSection = ({ handleWhatsAppClick }: CombosSectionProps) => {
+  const [combos, setCombos] = useState<Combo[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const { addToCart } = useCart();
+
+  useEffect(() => {
+    const fetchCombos = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/productos?_=${new Date().getTime()}`);
+        const data = await response.json();
+        const activeCombos = data.filter((product: Combo) => product.category === "Combos" && product.active);
+        setCombos(activeCombos);
+      } catch (error) {
+        console.error("Error fetching combos:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCombos();
+  }, []);
 
   const handleComboClick = (combo: Combo) => {
     addToCart({
       id: combo.id,
       name: combo.name,
-      price: Number(combo.price.replace(/\./g, '')),
+      price: combo.price,
       quantity: 1,
       image: combo.image
     });
     navigate('/tienda?category=Combos');
+  };
+
+  const formatPrice = (price: number) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
   return (
@@ -47,7 +71,9 @@ const CombosSection = ({ combos, handleWhatsAppClick }: CombosSectionProps) => {
         </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {combos.map((combo, index) => (
+          {isLoading && <div className="animate-pulse">Cargando combos...</div>}
+          {!isLoading && combos.length === 0 && <p className="text-center text-gray-400 col-span-full">No se encontraron combos activos.</p>}
+          {!isLoading && combos.length > 0 && combos.map((combo, index) => (
             <motion.div
               key={index}
               className="relative group overflow-hidden rounded-xl shadow-xl"
@@ -66,7 +92,7 @@ const CombosSection = ({ combos, handleWhatsAppClick }: CombosSectionProps) => {
                 <h3 className="text-2xl font-bold mb-3 text-golden">{combo.name}</h3>
                 <p className="text-gray-300 mb-6 text-lg">{combo.description}</p>
                 <div className="flex justify-between items-center">
-                  <p className="text-golden text-3xl font-bold">${combo.price}</p>
+                  <p className="text-golden text-3xl font-bold">${formatPrice(combo.price)}</p>
                   <button 
                     onClick={() => handleComboClick(combo)}
                     className="bg-golden text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:bg-golden/90 hover:scale-105 active:scale-95"

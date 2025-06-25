@@ -11,51 +11,6 @@ import AboutSection from '../components/AboutSection';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-const combos = [
-  {
-    id: "comboAbsolutSpeed",
-    name: "ABSOLUT + 5 SPEED",
-    description: "1 Absolut + 5 Speed",
-    price: "29.650",
-    image: "/lovable-uploads/Combos/ABSOLUT_+_5_SPEED.png"
-  },
-  {
-    id: "comboFernetCocas",
-    name: "FERNET + 2 COCAS",
-    description: "1 Fernet + 2 Coca-Colas",
-    price: "22.400",
-    image: "/lovable-uploads/Combos/FERNET_+_2_COCAS.png"
-  },
-  {
-    id: "comboGordonsSchweppes",
-    name: "GORDONS + 2 SCHWEPS",
-    description: "1 Gordon's + 2 Schweppes",
-    price: "19.400",
-    image: "/lovable-uploads/Combos/GORDONS_+_2_SCHWEPS.png"
-  },
-  {
-    id: "comboMalibuCepita",
-    name: "MALIBU + 2 CEPITA",
-    description: "1 Malibú + 2 Cepita",
-    price: "20.800",
-    image: "/lovable-uploads/Combos/MALIBU_+_2_CEPITA.png"
-  },
-  {
-    id: "comboSmirnoffSpeed",
-    name: "SMIRNOF + 5 SPEED",
-    description: "1 Smirnoff + 5 Speed",
-    price: "16.850",
-    image: "/lovable-uploads/Combos/SMIRNOF_+_5_SPEED.png"
-  },
-  {
-    id: "comboSmirnoffCepitas",
-    name: "SMIRNOFF + 2 CEPITAS",
-    description: "1 Smirnoff + 2 Cepitas",
-    price: "12.600",
-    image: "/lovable-uploads/Combos/SMIRNOFF_+_2_CEPITAS.png"
-  }
-];
-
 const IndexContent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -81,7 +36,7 @@ const IndexContent = () => {
         <FeaturesSection />
       </motion.div>
       <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.4 }} viewport={{ once: true }}>
-        <CombosSection combos={combos} handleWhatsAppClick={handleWhatsAppClick} />
+        <CombosSection handleWhatsAppClick={handleWhatsAppClick} />
       </motion.div>
       <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.6 }} viewport={{ once: true }}>
         <ProductsSection />

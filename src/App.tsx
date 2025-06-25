@@ -8,11 +8,14 @@ import NotFound from "./pages/NotFound";
 import Tienda from "./pages/Tienda";
 import CartProvider from "./components/Store/CartProvider";
 import { useState } from "react";
+import Admin from "./pages/Admin";
+import AdminLogin from "./components/Admin/AdminLogin";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const [cartCount, setCartCount] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -24,6 +27,10 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/tienda" element={<Tienda />} />
+              <Route 
+                path="/admin" 
+                element={isLoggedIn ? <Admin /> : <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />} 
+              />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

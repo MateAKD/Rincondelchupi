@@ -1,142 +1,101 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useLocation, Link } from 'react-router-dom';
 
 interface Combo {
   id: string;
   name: string;
+  description: string;
   price: number;
   image: string;
+  category: string;
+  active?: boolean;
 }
 
-const combos: Combo[] = [
-  {
-    id: "combo1",
-    name: "Combo Absolut + 5 Speed",
-    price: 25000,
-    image: "/lovable-uploads/Combos/ABSOLUT_+_5_SPEED.png",
-  },
-  {
-    id: "combo2",
-    name: "Combo Aconcagua + 2 Tonicas",
-    price: 20000,
-    image: "/lovable-uploads/Combos/ACONCAGUA_+_2_TONICAS.png",
-  },
-  {
-    id: "combo3",
-    name: "Combo Aperol + Cinzano To Spritz",
-    price: 22000,
-    image: "/lovable-uploads/Combos/APEROL_+_CINZANO_TO_SPRITZ.png",
-  },
-  {
-    id: "combo4",
-    name: "Combo Beefeater + 2 Schweppes",
-    price: 23000,
-    image: "/lovable-uploads/Combos/BEEFEATER_+_2_SCHWEPPS.png",
-  },
-  {
-    id: "combo5",
-    name: "Combo Chandon + 4 Speed",
-    price: 28000,
-    image: "/lovable-uploads/Combos/CHANDON_+_4_SPEED.png",
-  },
-  {
-    id: "combo6",
-    name: "Combo Fernet + 2 Cocas",
-    price: 18000,
-    image: "/lovable-uploads/Combos/FERNET_+_2_COCAS.png",
-  },
-  {
-    id: "combo7",
-    name: "Combo Gordons + 2 Schweppes",
-    price: 22000,
-    image: "/lovable-uploads/Combos/GORDONS_+_2_SCHWEPS.png",
-  },
-  {
-    id: "combo8",
-    name: "Combo Malibu + 2 Cepita",
-    price: 24000,
-    image: "/lovable-uploads/Combos/MALIBU_+_2_CEPITA.png",
-  },
-  {
-    id: "combo9",
-    name: "Combo Skyy + 5 Speed",
-    price: 24000,
-    image: "/lovable-uploads/Combos/SKYY_+_5_SPEED.png",
-  },
-  {
-    id: "combo10",
-    name: "Combo Smirnoff + 2 Cepitas",
-    price: 22000,
-    image: "/lovable-uploads/Combos/SMIRNOFF_+_2_CEPITAS.png",
-  },
-  {
-    id: "combo11",
-    name: "Combo Smirnoff + 5 Speed",
-    price: 24000,
-    image: "/lovable-uploads/Combos/SMIRNOF_+_5_SPEED.png",
-  },
-];
+interface CombosSectionProps {
+  handleWhatsAppClick: () => void;
+}
 
-export default function CombosSection() {
+const CombosSection = ({ handleWhatsAppClick }: CombosSectionProps) => {
+  const [combos, setCombos] = useState<Combo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
-  // Format price to display with commas
+  useEffect(() => {
+    const fetchCombos = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/productos?_=${new Date().getTime()}`);
+        const data = await response.json();
+        const activeCombos = data.filter((product: Combo) => product.category === "Combos" && product.active);
+        setCombos(activeCombos);
+      } catch (error) {
+        console.error("Error fetching combos:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCombos();
+  }, [location.pathname]);
+
   const formatPrice = (price: number) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src = "/placeholder-image.png"; // Imagen por defecto
+    e.currentTarget.src = "/placeholder-image.png";
   };
 
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <motion.h2 
-          className="text-3xl font-bold text-center mb-8"
-          initial={{ opacity: 0, y: 20 }}
+    <section id="combos" className="relative py-10 bg-black">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-golden/5 via-secondary to-secondary animate-pulse duration-1000 opacity-30"></div>
+      
+      <div className="container-custom relative z-10">
+        <motion.h2
+          className="text-3xl md:text-5xl font-bold text-center mb-16 relative pb-4 text-golden after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-32 after:h-1 after:bg-golden"
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          viewport={{ once: true }}
         >
-          Nuestros Combos
+          NUESTROS COMBOS
         </motion.h2>
-        <div 
-          role="list" 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
-        >
-          {isLoading && <div className="animate-pulse">...</div>}
-          {combos.map((combo, index) => (
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {isLoading && <div className="animate-pulse">Cargando combos...</div>}
+          {!isLoading && combos.length === 0 && <p className="text-center text-gray-400 col-span-full">No se encontraron combos activos.</p>}
+          {!isLoading && combos.length > 0 && combos.map((combo, index) => (
             <motion.div
-              role="listitem"
-              key={combo.id}
-              initial={{ opacity: 0, y: 20 }}
+              key={index}
+              className="relative group overflow-hidden rounded-xl shadow-xl"
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                duration: 0.3,
-                delay: index * 0.05 // Reducido el delay entre cada combo
-              }}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              transition={{ duration: 0.8, delay: 0.3 + index * 0.15 }}
+              viewport={{ once: true }}
             >
               <Link 
-                to="/tienda?category=combos" 
+                to={`/tienda?category=Combos&productId=${combo.id}`}
                 className="block"
                 aria-label={`Ver ${combo.name} en la tienda`}
               >
-                <div className="relative h-48 w-full">
-                  <img
-                    loading="lazy"
-                    src={combo.image}
-                    alt={combo.name}
-                    className="w-full h-full object-contain p-4"
-                    onError={handleImageError}
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold mb-2">{combo.name}</h3>
-                  <p className="text-gray-600 font-bold">${formatPrice(combo.price)}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent z-10"></div>
+                <img 
+                  src={combo.image} 
+                  alt={combo.name} 
+                  className="w-full h-full object-cover aspect-[3/4] group-hover:scale-110 transition-transform duration-500"
+                  onError={handleImageError}
+                />
+                <div className="absolute inset-x-0 bottom-0 p-8 z-20">
+                  <h3 className="text-2xl font-bold mb-3 text-golden">{combo.name}</h3>
+                  <p className="text-gray-300 mb-6 text-lg">{combo.description}</p>
+                  <div className="flex justify-between items-center">
+                    <p className="text-golden text-3xl font-bold">${formatPrice(combo.price)}</p>
+                    <button 
+                      className="bg-golden text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:bg-golden/90 hover:scale-105 active:scale-95"
+                    >
+                      ¡Lo quiero!
+                    </button>
+                  </div>
                 </div>
               </Link>
             </motion.div>
@@ -145,4 +104,6 @@ export default function CombosSection() {
       </div>
     </section>
   );
-} 
+};
+
+export default CombosSection; 
