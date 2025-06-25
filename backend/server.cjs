@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001; // <--- Cambiado acá
 
 app.use(cors());
 app.use(express.json());
@@ -29,4 +29,4 @@ app.post('/productos', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Servidor backend escuchando en http://localhost:${PORT}`);
-}); 
+});
